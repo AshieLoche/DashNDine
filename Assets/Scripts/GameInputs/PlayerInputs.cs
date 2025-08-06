@@ -1,0 +1,110 @@
+using System;
+using DashNDine.EnumSystem;
+using DashNDine.MiscSystem;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+
+namespace DashNDine.GameInputSystem
+{
+    public class PlayerInputs : SingletonBehaviour<PlayerInputs>, InputSystem_Actions.IPlayerActions
+    {
+        private InputSystem_Actions _inputSystemActions;
+        private InputSystem_Actions.PlayerActions _playerActions;
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            _inputSystemActions = new InputSystem_Actions();
+
+            _playerActions = _inputSystemActions.Player;
+            _playerActions.AddCallbacks(this);
+        }
+
+        private void OnDestroy()
+        {
+            _playerActions.RemoveCallbacks(this);
+            _inputSystemActions.Dispose();
+        }
+
+        private void OnEnable()
+            => _playerActions.Enable();
+
+        private void OnDisable()
+            => _playerActions.Disable();
+
+        public Action OnDialoguePerformedAction;
+        public Action OnInteractPerformedAction;
+        public Action<Vector2> OnMovePerformedAction;
+        public Action<QuickTimeEventButton> OnQuickTimeEventPerformedAction;
+        public Action OnSkillPerformedAction;
+        public Action<SkillSelectButton> OnSkillSelectPerformedAction;
+
+        public void OnDialogue(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                OnDialoguePerformedAction?.Invoke();
+        }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                OnInteractPerformedAction?.Invoke();
+        }
+
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                OnMovePerformedAction?.Invoke(context.ReadValue<Vector2>());
+        }
+
+        public void OnQuickTimeEvent(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            if (context.control is KeyControl keyControl)
+            {
+                string stringModifierFunc(string keyControlDisplayName)
+                {
+                    return Utils.NumberToName(keyControlDisplayName);
+                }
+
+                InvokeActionFromKey(keyControl, stringModifierFunc, OnQuickTimeEventPerformedAction);
+            }
+        }
+
+        public void OnSkill(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                OnSkillPerformedAction?.Invoke();
+        }
+
+        public void OnSkillSelect(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            if (context.control is KeyControl keyControl)
+            {
+                string stringModifierFunc(string keyControlDisplayName)
+                {
+                    return keyControlDisplayName + "Arrow";
+                };
+
+                InvokeActionFromKey(keyControl, stringModifierFunc, OnSkillSelectPerformedAction);
+            }
+        }
+
+        private void InvokeActionFromKey<T>(KeyControl keyControl, Func<string, string> stringModifierFunc, Action<T> action) where T : struct, Enum
+        {
+            string keyControlDisplayName = keyControl.displayName;
+            string enumValueName = stringModifierFunc?.Invoke(keyControlDisplayName);
+
+            T enumValue = Utils.ConvertStringToEnum<T, PlayerInput>(enumValueName, gameObject);
+
+            action?.Invoke(enumValue);
+        }
+    }
+}
