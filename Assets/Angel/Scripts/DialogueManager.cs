@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject questPromptPanel;
     [SerializeField] private TextMeshProUGUI questObjectiveTxt;
     [SerializeField] private Button acceptBtn, noBtn;
+    private bool isAcceptingQuest = false;
 
     [Header("Dialogue Collection")]
     [SerializeField] string csvPath;
@@ -41,7 +42,7 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InputSystem.actions.FindAction("Click").WasPerformedThisFrame())
+        if (InputSystem.actions.FindAction("Click").WasPerformedThisFrame() && !questPromptPanel.activeSelf && isAcceptingQuest)
         {
             StopCoroutine(TypeSentence(dialogueTxtHolder));
             dialogueTxt.text = dialogueTxtHolder;
@@ -52,6 +53,7 @@ public class DialogueManager : MonoBehaviour
 
     public void OpenDialogue(NPCManager npc, QuestData questData)
     {
+        isAcceptingQuest = true;
         dialoguePanel.SetActive(true);
         npcName.text = npc.GetName();
         npcImage.GetComponent<Image>().sprite = npc.GetImage();
@@ -101,6 +103,7 @@ public class DialogueManager : MonoBehaviour
 
     public void HideInteractionPanels()
     {
+        isAcceptingQuest = false;
         dialoguePanel.SetActive(false);
         questPromptPanel.SetActive(false);
     }

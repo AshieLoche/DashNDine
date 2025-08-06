@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.ComponentModel;
@@ -13,27 +13,27 @@ public class DialogueChoiceUI : MonoBehaviour
 
     void Start()
     {
-        uiNavInput = InputSystem.actions.FindAction("Navigation");
+        uiNavInput = InputSystem.actions.FindAction("Navigate");
         HighlightButton(selectedIndex);
     }
 
     void Update()
     {
-        if (uiNavInput.ReadValue<Vector2>() != null) StartChoosing();
+        if (uiNavInput.ReadValue<Vector2>().x != 0) StartChoosing();
 
         if (!isChoosing) return;
-        
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+
+        if (uiNavInput.ReadValue<Vector2>().x < 0)
         {
-            selectedIndex = Mathf.Clamp(selectedIndex-1, 0, 2);
+            selectedIndex = Mathf.Clamp(selectedIndex - 1, 0, 2);
             HighlightButton(selectedIndex);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (uiNavInput.ReadValue<Vector2>().x > 0)
         {
             selectedIndex = Mathf.Clamp(selectedIndex + 1, 0, 2);
             HighlightButton(selectedIndex);
         }
-        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z))
+        else if (InputSystem.actions.FindAction("Submit").WasPerformedThisFrame())
         {
             choiceButtons[selectedIndex].onClick.Invoke();
             isChoosing = false;
@@ -59,4 +59,3 @@ public class DialogueChoiceUI : MonoBehaviour
         }
     }
 }
-*/
