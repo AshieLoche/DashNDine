@@ -1,0 +1,9 @@
+Food Name,Effect,QTE Chain
+Spicy Stew,Burns enemies in range periodically,1-1-2-4-3-6
+Frozen Delight,Slows enemies periodically,2-2-1-1-6-6
+Mystic Soup,Pushes enemies back in interval,6-6-5-5-1-6
+Speed Salad,Boosts player movement,2-2-2-6-6-6
+Iron Broth,Reduces incoming damage,6-1-2-2-3-3
+Thunder Bites,Stuns enemies briefly,1-1-1-5-5-3
+Healing Curry,Heals point of HP,6-5-4-1-2-3
+Wind Dumpling,Creates short dash burst,4-3-5-1-6-5

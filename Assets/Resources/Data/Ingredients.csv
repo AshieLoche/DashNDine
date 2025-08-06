@@ -1,0 +1,19 @@
+Ingredient Name,Region,Found in,Special Ingredient?,Pot Defense Effect (if special)
+Wheat,Region 1,World,No,—
+Honey,Region 1,World,No,—
+Berry,Region 1,World,No,—
+Tomato,Region 1,World,No,—
+Carrot,Region 1,World,No,—
+Onion,Region 1,World,No,—
+Meat Chunk,Region 2,World,No,—
+Fish Fillet,Region 2,World,No,—
+Spice Leaf,Region 2,World,No,—
+Blue Herb,Region 2,Top of Tower,Yes,Shortens QTE chain length temporarily
+Rare Mushroom,Region 2,Top of Tower,Yes,Some enemy will be auto-completes the last 3 QTE 
+Dragonfruit,Region 3,Top of Tower,Yes,Boosts reputation/loot multiplier 
+Cactus Gel,Region 3,Top of Tower,Yes,"If enemy collide with the pot, pot will not take damge 2 times"
+Smoke Pepper,Region 3,World,No,—
+Special Fruit,Region 4,Top of Tower,Yes,Creates decoy pot to draw aggro destroy after one collision
+Shadow Egg,Region 4,Top of Tower,Yes,Every 3 seconds throw and egg to random close enemy and stun it
+Beast Bone,Region 4,Top of Tower,Yes,After 3 consecutive succesful elemination stomp the ground to eleminate remaning enemy in range
+Molten Herb,Region 4,Top of Tower,Yes,Every 3 seconds molten snow will fall and eleminate enemy

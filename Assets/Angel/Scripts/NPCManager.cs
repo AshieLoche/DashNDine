@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
-    [SerializeField] private NPCData npcData;
     [Header("NPC Information")]
-    [SerializeField] private int region;
+    [SerializeField] private NPCData npcData;
     [SerializeField] private int npcID;
     [SerializeField] private string npcName;
     [SerializeField] private Sprite image;
     [SerializeField] private int completedQuests;
-    [SerializeField] private bool isInProgress;
 
+    [Header("Quest Information")]
     [SerializeField] private List<QuestData> quests;
+    [SerializeField] private bool isInProgress, isSuccessful;
+    public bool IsInProgress => isInProgress;
+    public bool IsSuccessful => isSuccessful;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        region = npcData.regionID;
         npcID = npcData.npcID;
         npcName = npcData.npcName;
         image = npcData.npcImage;
         completedQuests = npcData.completedQuests;
 
-        quests = QuestManager.Instance.GetQuests(npcID);
+        if(npcID != 0) quests = GameManager.Instance.questManager.GetNPCQuests(npcID);
     }
 
     public QuestData GiveQuest()
@@ -47,6 +48,6 @@ public class NPCManager : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Entered");
-        QuestManager.Instance.dialogueManager.OpenDialogue(this, quests[completedQuests]);
+        GameManager.Instance.dialogueManager.OpenDialogue(this, quests[completedQuests]);
     }
 }

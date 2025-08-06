@@ -25,11 +25,17 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI questObjectiveTxt;
     [SerializeField] private Button acceptBtn, noBtn;
 
+    [Header("Dialogue Collection")]
+    [SerializeField] string csvPath;
+    [SerializeField] List<DialogueData> dialogueDataSet;
+    [SerializeField] DialogueCSVLoader csvLoader;
+
     private void Start()
     {
         HideInteractionPanels();
         acceptBtn.onClick.AddListener(HideInteractionPanels);
         noBtn.onClick.AddListener(HideInteractionPanels);
+        dialogueDataSet = csvLoader.LoadCSV(csvPath);
     }
 
     // Update is called once per frame
@@ -49,8 +55,8 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
         npcName.text = npc.GetName();
         npcImage.GetComponent<Image>().sprite = npc.GetImage();
-        dialogueTxtHolder = questData.taskDialogue;
-        questObjectiveTxt.text = questData.taskDescription;
+        dialogueTxtHolder = GetDialogueTxt(questData.questID, npc.IsSuccessful,npc.IsInProgress);
+        questObjectiveTxt.text = questData.Description;
         acceptBtn.onClick.AddListener(npc.AcceptQuest);
         StartCoroutine(TypeSentence(dialogueTxtHolder));
     }
@@ -66,10 +72,33 @@ public class DialogueManager : MonoBehaviour
         }
         ShowQuestPanel();
     }
+
+    private string GetDialogueTxt(int taskID, bool isSuccessful, bool isInProgress)
+    {
+        foreach(var dialogue in dialogueDataSet)
+        {
+            if(dialogue.taskID == taskID)
+            {
+                if (!isInProgress && !isSuccessful)
+                    return dialogue.acceptDialogue;
+                else if (isInProgress && !isSuccessful)
+                    return dialogue.unfinishedDialogue;
+                else if (!isInProgress && isSuccessful)
+                    return dialogue.finishDialogue;
+                else if (!isInProgress && !isSuccessful)
+                    return dialogue.failedDialogue;
+                else
+                    return null;
+            }     
+        }
+        return null;
+    }
+
     public void ShowQuestPanel()
     {
         questPromptPanel.SetActive(true);
     }
+
     public void HideInteractionPanels()
     {
         dialoguePanel.SetActive(false);
