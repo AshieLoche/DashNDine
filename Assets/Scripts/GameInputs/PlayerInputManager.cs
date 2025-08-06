@@ -7,8 +7,15 @@ using UnityEngine.InputSystem.Controls;
 
 namespace DashNDine.GameInputSystem
 {
-    public class PlayerInputs : SingletonBehaviour<PlayerInputs>, InputSystem_Actions.IPlayerActions
+    public class PlayerInputManager : SingletonBehaviour<PlayerInputManager>, InputSystem_Actions.IPlayerActions
     {
+        public Action OnDialoguePerformedAction;
+        public Action OnInteractPerformedAction;
+        public Action<Vector2> OnMovePerformedAction;
+        public Action<QuickTimeEventButton> OnQuickTimeEventPerformedAction;
+        public Action OnSkillPerformedAction;
+        public Action<SkillSelectButton> OnSkillSelectPerformedAction;
+
         private InputSystem_Actions _inputSystemActions;
         private InputSystem_Actions.PlayerActions _playerActions;
 
@@ -34,13 +41,9 @@ namespace DashNDine.GameInputSystem
         private void OnDisable()
             => _playerActions.Disable();
 
-        public Action OnDialoguePerformedAction;
-        public Action OnInteractPerformedAction;
-        public Action<Vector2> OnMovePerformedAction;
-        public Action<QuickTimeEventButton> OnQuickTimeEventPerformedAction;
-        public Action OnSkillPerformedAction;
-        public Action<SkillSelectButton> OnSkillSelectPerformedAction;
+        // TODO: ADD ESCAPE TO UI INPUTS
 
+        // TODO: MOVE DIALOGUE TO UI INPUTS
         public void OnDialogue(InputAction.CallbackContext context)
         {
             if (context.performed)
