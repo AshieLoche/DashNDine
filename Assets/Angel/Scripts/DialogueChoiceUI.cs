@@ -2,22 +2,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.ComponentModel;
+using UnityEngine.InputSystem;
 
 public class DialogueChoiceUI : MonoBehaviour
 {
     [SerializeField] private Button[] choiceButtons;
-    [SerializeField] private int selectedIndex = 0;
-    [SerializeField] private bool isChoosing = false;
+    private int selectedIndex = 0;
+    private bool isChoosing = false;
+    private InputAction uiNavInput;
 
     void Start()
     {
+        uiNavInput = InputSystem.actions.FindAction("Navigation");
         HighlightButton(selectedIndex);
     }
 
     void Update()
     {
-        if (!isChoosing) return;
+        if (uiNavInput.ReadValue<Vector2>() != null) StartChoosing();
 
+        if (!isChoosing) return;
+        
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             selectedIndex = Mathf.Clamp(selectedIndex-1, 0, 2);
