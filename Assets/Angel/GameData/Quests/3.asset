@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f804b0162cd4d44b52a3852a3f9480, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  questID: 3
+  npcID: 1
+  Description: Bring tomato soup ingredients or cook it yourself.
+  type: 2
+  enemyNumbers: 20
+  requiredIngredients:
+  - {fileID: 3283052330723340582, guid: b7748ac328066e84ea1eba2de613b7b9, type: 3}
+  - {fileID: 3283052330723340582, guid: b7748ac328066e84ea1eba2de613b7b9, type: 3}
+  - {fileID: 3283052330723340582, guid: ef60cb6ea6f9b934b96a92dbe10e26e1, type: 3}
+  reputation: 25
