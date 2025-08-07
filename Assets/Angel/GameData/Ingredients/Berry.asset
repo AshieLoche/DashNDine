@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientID: 3
   ingredientName: Berry
-  ingredientImage: {fileID: 0}
+  ingredientImage: {fileID: -1435901459259225544, guid: e488332785801f040b396b8a13504538, type: 3}
   isSpecial: 0
   region: 0
   location: 0
-  spawnPoints: []
   AdditionalEffect: none

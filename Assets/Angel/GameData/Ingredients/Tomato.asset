@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientID: 4
   ingredientName: Tomato
-  ingredientImage: {fileID: 0}
+  ingredientImage: {fileID: -8113185096396602001, guid: 8a8fbabb455005947b637a937c95c45b, type: 3}
   isSpecial: 0
   region: 0
   location: 0
-  spawnPoints: []
   AdditionalEffect: none

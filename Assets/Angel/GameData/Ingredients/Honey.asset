@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientID: 2
   ingredientName: Honey
-  ingredientImage: 
+  ingredientImage: {fileID: 3292709604598650623, guid: 1f010adcef591894fabc946d9b84a31d, type: 3}
+  isSpecial: 0
   region: 0
   location: 0
-  spawnPoints: []
   AdditionalEffect: none

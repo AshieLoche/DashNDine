@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientID: 1
   ingredientName: Wheat
-  ingredientImage: 
+  ingredientImage: {fileID: 7720945941185500035, guid: fa4cf66c2d6e14e47aab5187b8d32e03, type: 3}
+  isSpecial: 0
   region: 0
   location: 0
-  spawnPoints: []
   AdditionalEffect: none
