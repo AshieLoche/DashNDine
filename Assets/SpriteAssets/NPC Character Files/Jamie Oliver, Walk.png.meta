@@ -1,0 +1,884 @@
+fileFormatVersion: 2
+guid: 75a0ae1a47db67644a28937ca03414f6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 208820273165933885
+    second: Jamie Oliver, Walk_0
+  - first:
+      213: -2781858477805898223
+    second: Jamie Oliver, Walk_1
+  - first:
+      213: 5288283457000755996
+    second: Jamie Oliver, Walk_2
+  - first:
+      213: 9158235359140144546
+    second: Jamie Oliver, Walk_3
+  - first:
+      213: -7633604859255870809
+    second: Jamie Oliver, Walk_4
+  - first:
+      213: -8214600896409726429
+    second: Jamie Oliver, Walk_5
+  - first:
+      213: 6811166577742991283
+    second: Jamie Oliver, Walk_6
+  - first:
+      213: 5284783099422535737
+    second: Jamie Oliver, Walk_7
+  - first:
+      213: 5033050371640221830
+    second: Jamie Oliver, Walk_8
+  - first:
+      213: 8306509878698973458
+    second: Jamie Oliver, Walk_9
+  - first:
+      213: -5857213978035399758
+    second: Jamie Oliver, Walk_10
+  - first:
+      213: 101089710744193582
+    second: Jamie Oliver, Walk_11
+  - first:
+      213: 6620014278413533153
+    second: Jamie Oliver, Walk_12
+  - first:
+      213: 5569823495964412580
+    second: Jamie Oliver, Walk_13
+  - first:
+      213: -6831269457143280754
+    second: Jamie Oliver, Walk_14
+  - first:
+      213: -5973931605068573
+    second: Jamie Oliver, Walk_15
+  - first:
+      213: 4835683940581008771
+    second: Jamie Oliver, Walk_16
+  - first:
+      213: -9056735045038617346
+    second: Jamie Oliver, Walk_17
+  - first:
+      213: -5252361530792984097
+    second: Jamie Oliver, Walk_18
+  - first:
+      213: -361194099046079021
+    second: Jamie Oliver, Walk_19
+  - first:
+      213: 793481174110484336
+    second: Jamie Oliver, Walk_20
+  - first:
+      213: -8043761977957390190
+    second: Jamie Oliver, Walk_21
+  - first:
+      213: -7408591145661609908
+    second: Jamie Oliver, Walk_22
+  - first:
+      213: -4494462581972138247
+    second: Jamie Oliver, Walk_23
+  - first:
+      213: -1255083637230692903
+    second: Jamie Oliver, Walk_24
+  - first:
+      213: 6768311789122761969
+    second: Jamie Oliver, Walk_25
+  - first:
+      213: -3902936197729511088
+    second: Jamie Oliver, Walk_26
+  - first:
+      213: -6638821020404437768
+    second: Jamie Oliver, Walk_27
+  - first:
+      213: 1680320535924824165
+    second: Jamie Oliver, Walk_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 122
+        width: 370
+        height: 519
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3d94fb9ee0e5e200800000000000000
+      internalID: 208820273165933885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_1
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 191
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11678fe047ad469d0800000000000000
+      internalID: -2781858477805898223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_2
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 121
+        width: 370
+        height: 526
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c13da1e19c1c36940800000000000000
+      internalID: 5288283457000755996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_3
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 186
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a568f66986981f70800000000000000
+      internalID: 9158235359140144546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_4
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 121
+        width: 370
+        height: 532
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aaab5833dcff0690800000000000000
+      internalID: -7633604859255870809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_5
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 181
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32294ede100effd80800000000000000
+      internalID: -8214600896409726429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_6
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 122
+        width: 382
+        height: 533
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bf42645aef168e50800000000000000
+      internalID: 6811166577742991283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_7
+      rect:
+        serializedVersion: 2
+        x: 2111
+        y: 123
+        width: 377
+        height: 536
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 930711c9a32575940800000000000000
+      internalID: 5284783099422535737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_8
+      rect:
+        serializedVersion: 2
+        x: 2623
+        y: 125
+        width: 372
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 680634295acf8d540800000000000000
+      internalID: 5033050371640221830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_9
+      rect:
+        serializedVersion: 2
+        x: 3135
+        y: 127
+        width: 370
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 219102399b6a64370800000000000000
+      internalID: 8306509878698973458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_10
+      rect:
+        serializedVersion: 2
+        x: 3647
+        y: 125
+        width: 370
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b35fb97beef6bea0800000000000000
+      internalID: -5857213978035399758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_11
+      rect:
+        serializedVersion: 2
+        x: 4159
+        y: 123
+        width: 370
+        height: 536
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2aca5b6e84276100800000000000000
+      internalID: 101089710744193582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_12
+      rect:
+        serializedVersion: 2
+        x: 4671
+        y: 122
+        width: 370
+        height: 533
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ef3ad079e30fdb50800000000000000
+      internalID: 6620014278413533153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_13
+      rect:
+        serializedVersion: 2
+        x: 5183
+        y: 121
+        width: 370
+        height: 532
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aa459a95fcfb4d40800000000000000
+      internalID: 5569823495964412580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_14
+      rect:
+        serializedVersion: 2
+        x: 5695
+        y: 121
+        width: 370
+        height: 526
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8bcff15f947231a0800000000000000
+      internalID: -6831269457143280754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_15
+      rect:
+        serializedVersion: 2
+        x: 6207
+        y: 122
+        width: 370
+        height: 519
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e474c8adb6caeff0800000000000000
+      internalID: -5973931605068573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_16
+      rect:
+        serializedVersion: 2
+        x: 6719
+        y: 121
+        width: 370
+        height: 526
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38564646ceccb1340800000000000000
+      internalID: 4835683940581008771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_17
+      rect:
+        serializedVersion: 2
+        x: 7231
+        y: 121
+        width: 370
+        height: 532
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efc44af0673005280800000000000000
+      internalID: -9056735045038617346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_18
+      rect:
+        serializedVersion: 2
+        x: 7743
+        y: 122
+        width: 370
+        height: 533
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd14825140ddb17b0800000000000000
+      internalID: -5252361530792984097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_19
+      rect:
+        serializedVersion: 2
+        x: 8255
+        y: 123
+        width: 370
+        height: 536
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d5246f61e7ccfaf0800000000000000
+      internalID: -361194099046079021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_20
+      rect:
+        serializedVersion: 2
+        x: 8767
+        y: 125
+        width: 370
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 077b0de7ce2030b00800000000000000
+      internalID: 793481174110484336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_21
+      rect:
+        serializedVersion: 2
+        x: 9279
+        y: 127
+        width: 370
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2986e064911de5090800000000000000
+      internalID: -8043761977957390190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_22
+      rect:
+        serializedVersion: 2
+        x: 9791
+        y: 125
+        width: 372
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c484cbcfa956f2990800000000000000
+      internalID: -7408591145661609908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_23
+      rect:
+        serializedVersion: 2
+        x: 10303
+        y: 123
+        width: 377
+        height: 536
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f60449281670a1c0800000000000000
+      internalID: -4494462581972138247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_24
+      rect:
+        serializedVersion: 2
+        x: 10815
+        y: 122
+        width: 382
+        height: 533
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d59577e41c059ee0800000000000000
+      internalID: -1255083637230692903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_25
+      rect:
+        serializedVersion: 2
+        x: 11327
+        y: 121
+        width: 370
+        height: 532
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f430cf46bfdded50800000000000000
+      internalID: 6768311789122761969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_26
+      rect:
+        serializedVersion: 2
+        x: 11632
+        y: 181
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0599151f43cf5d9c0800000000000000
+      internalID: -3902936197729511088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_27
+      rect:
+        serializedVersion: 2
+        x: 11839
+        y: 121
+        width: 370
+        height: 526
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fca567b47b2ed3a0800000000000000
+      internalID: -6638821020404437768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jamie Oliver, Walk_28
+      rect:
+        serializedVersion: 2
+        x: 12149
+        y: 186
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 568d79cef92b15710800000000000000
+      internalID: 1680320535924824165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Jamie Oliver, Walk_0: 208820273165933885
+      Jamie Oliver, Walk_1: -2781858477805898223
+      Jamie Oliver, Walk_10: -5857213978035399758
+      Jamie Oliver, Walk_11: 101089710744193582
+      Jamie Oliver, Walk_12: 6620014278413533153
+      Jamie Oliver, Walk_13: 5569823495964412580
+      Jamie Oliver, Walk_14: -6831269457143280754
+      Jamie Oliver, Walk_15: -5973931605068573
+      Jamie Oliver, Walk_16: 4835683940581008771
+      Jamie Oliver, Walk_17: -9056735045038617346
+      Jamie Oliver, Walk_18: -5252361530792984097
+      Jamie Oliver, Walk_19: -361194099046079021
+      Jamie Oliver, Walk_2: 5288283457000755996
+      Jamie Oliver, Walk_20: 793481174110484336
+      Jamie Oliver, Walk_21: -8043761977957390190
+      Jamie Oliver, Walk_22: -7408591145661609908
+      Jamie Oliver, Walk_23: -4494462581972138247
+      Jamie Oliver, Walk_24: -1255083637230692903
+      Jamie Oliver, Walk_25: 6768311789122761969
+      Jamie Oliver, Walk_26: -3902936197729511088
+      Jamie Oliver, Walk_27: -6638821020404437768
+      Jamie Oliver, Walk_28: 1680320535924824165
+      Jamie Oliver, Walk_3: 9158235359140144546
+      Jamie Oliver, Walk_4: -7633604859255870809
+      Jamie Oliver, Walk_5: -8214600896409726429
+      Jamie Oliver, Walk_6: 6811166577742991283
+      Jamie Oliver, Walk_7: 5284783099422535737
+      Jamie Oliver, Walk_8: 5033050371640221830
+      Jamie Oliver, Walk_9: 8306509878698973458
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
