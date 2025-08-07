@@ -1,0 +1,16 @@
+{
+    "name": "NPCSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e459b1e6f9c42dd4ebea8403807c1bfb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
