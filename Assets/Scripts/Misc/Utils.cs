@@ -1,5 +1,5 @@
 using System;
-using UnityEngine;
+using System.Text.RegularExpressions;
 
 namespace DashNDine.MiscSystem
 {
@@ -19,17 +19,17 @@ namespace DashNDine.MiscSystem
             };
         }
 
-        public static Tenum ConvertStringToEnum<Tenum, Tscript>(string str, GameObject sender)
+        public static bool TryConvertStringToEnum<Tenum>(string value, out Tenum newEnum)
             where Tenum : struct, Enum
-            where Tscript : Component
-        {
-            if (!Enum.TryParse(str, true, out Tenum enumValue))
-            {
-                Debug.LogError($"String to {typeof(Tenum).Name} parsing failed in {typeof(Tscript).Name} at {sender.name}");
-                return default;
-            }
+            => Enum.TryParse(value, true, out newEnum);
 
-            return enumValue;
-        }
+        public static string RemoveWhiteSpaceAndDash(string str)
+            => Regex.Replace(str, @"[\s\-]", "");
+
+        public static bool TryConvertStringToInt(string value, out int newInt)
+            => int.TryParse(value, out newInt);
+
+        public static bool TryConvertStringToFloat(string value, out float newFloat)
+            => float.TryParse(value, out newFloat);
     }
 }
