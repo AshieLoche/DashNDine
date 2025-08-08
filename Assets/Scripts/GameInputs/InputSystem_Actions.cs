@@ -221,7 +221,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -232,7 +232,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/numpad1"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -243,7 +243,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -254,7 +254,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/numpad2"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -265,7 +265,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -276,7 +276,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/numpad3"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -287,7 +287,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -298,7 +298,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/numpad3"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -306,10 +306,10 @@ namespace DashNDine.GameInputSystem
                 {
                     ""name"": """",
                     ""id"": ""c43ef734-d9ba-4cc1-8b62-1d1a36e9cee1"",
-                    ""path"": ""<Keyboard>/numpad3"",
+                    ""path"": ""<Keyboard>/5"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -320,7 +320,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/numpad5"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -331,7 +331,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/6"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -342,7 +342,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/numpad6"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""QuickTimeEvent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -353,7 +353,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Skill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -364,7 +364,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""SkillSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -375,7 +375,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""SkillSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -386,7 +386,7 @@ namespace DashNDine.GameInputSystem
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""SkillSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

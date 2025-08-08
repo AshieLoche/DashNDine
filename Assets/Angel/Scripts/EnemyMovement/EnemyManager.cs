@@ -1,9 +1,12 @@
-using System.Runtime.Serialization;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
 public enum enemyType
 {
     Ambush, Raider, Defense
 }
+
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private EnemyData enemyData;
@@ -11,6 +14,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private enemyType enemyType;
     [SerializeField] private float speed;
     [SerializeField] private GameObject target;
+    [SerializeField] private List<int> qteSequence;
+    private bool isQteSuccessful = false;
     private Animator enemyAnim;
 
     [Header("Raider Enemy Information")]
@@ -19,34 +24,43 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float playerDistance, spawnPtDistance, moveDistanceThreshold;
     private bool isLookingRight, isMoving;
 
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI qteText;
+
     private EnemyMovement enemyMovement;
     private EnemyAction enemyAction;
+    private EnemyUI enemyUI;
 
     private void Awake()
     {
         enemyMovement = GetComponent<EnemyMovement>();
         enemyAction = GetComponent<EnemyAction>();
-    }
-    public void Start()
-    {
-        speed = enemyData.baseSpeed;
-        enemyAnim = GetComponent<Animator>();
-        enemyAnim.runtimeAnimatorController = enemyData.controller;
+        enemyUI = GetComponent<EnemyUI>();
 
-        gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.image;
-        if (enemyType == enemyType.Raider)
+        if (qteText == null)
         {
-            startingPosition = transform.position;
-            target = GameObject.FindGameObjectWithTag("Player");
+            Debug.LogWarning($"{name}: No QTE Text assigned or found in scene!");
         }
     }
-    public void Update()
+
+    private void Start()
     {
-        if(enemyType == enemyType.Raider )
+        InitializeEnemy();
+    }
+
+    private void OnEnable()
+    {
+        InitializeEnemy();
+    }
+
+    private void Update()
+    {
+        if (enemyType == enemyType.Raider)
         {
-            playerDistance = Vector3.Distance(target.transform.position, gameObject.transform.position);
-            spawnPtDistance = Vector3.Distance(gameObject.transform.position, startingPosition);
-            // If in range and within allowable move distance;
+            qteText.gameObject.SetActive(false);
+            playerDistance = Vector3.Distance(target.transform.position, transform.position);
+            spawnPtDistance = Vector3.Distance(transform.position, startingPosition);
+
             if (playerDistance < range && spawnPtDistance < moveDistanceThreshold)
             {
                 isMoving = true;
@@ -58,9 +72,57 @@ public class EnemyManager : MonoBehaviour
                 isLookingRight = enemyMovement.StartMoving(startingPosition, speed);
             }
         }
+        else
+        {
+            isQteSuccessful = enemyAction.IsQTESuccessful;
+            if (isQteSuccessful) Die();
+        }
+
         isMoving = enemyMovement.CheckMoveAction();
-        if (isLookingRight && transform.eulerAngles != Vector3.zero && isMoving) transform.eulerAngles = Vector3.zero;
-        else if (!isLookingRight && transform.eulerAngles != new Vector3(0f, 180f, 0f) && isMoving) transform.eulerAngles = new Vector3(0,180,0);
+        if (isMoving) enemyAction.LookAtPlayer(isLookingRight);
+
+
+    }
+
+    private void InitializeEnemy()
+    {
+        speed = enemyData.baseSpeed;
+        enemyAnim = GetComponent<Animator>();
+        enemyAnim.runtimeAnimatorController = enemyData.controller;
+
+        GetComponent<SpriteRenderer>().sprite = enemyData.image;
+
+        if (enemyType == enemyType.Raider)
+        {
+            startingPosition = transform.position;
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
+        else
+        {
+            qteSequence = enemyAction.GetQTESequence(enemyData.difficulty);
+            enemyUI.SetSequence(qteText, qteSequence);
+        }
+                    
+    }
+
+    public void CheckInput(int inputtedKey)
+    {
+        if (enemyType == enemyType.Raider) return;
+
+        if (qteSequence == null || qteSequence.Count == 0)
+        {
+            Debug.LogWarning($"{name} QTE sequence not initialized yet!");
+            return;
+        }
+
+        int correctInputs = enemyAction.QTEKeyInputCheck(inputtedKey, qteSequence);
+        enemyUI.IndicateCorrectInput(correctInputs);
+    }
+
+
+    public void SetDifficulty(Difficulty difficulty)
+    {
+        enemyData.difficulty = difficulty;
     }
 
     public void MoveEnemy(GameObject trgt)
