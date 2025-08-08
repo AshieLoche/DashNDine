@@ -3,8 +3,8 @@ guid: 4bbbd0247cfae5940936f187a5914c60
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5247684153158658287
-    second: Uncle Roger_0
+      213: 2639443668028177504
+    second: TomotheScout_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Uncle Roger_0
+      name: TomotheScout_0
       rect:
         serializedVersion: 2
         x: 95
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe8e7721fe483d840800000000000000
-      internalID: 5247684153158658287
+      spriteID: 06c397d180031a420800000000000000
+      internalID: 2639443668028177504
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Uncle Roger_0: 5247684153158658287
+      TomotheScout_0: 2639443668028177504
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

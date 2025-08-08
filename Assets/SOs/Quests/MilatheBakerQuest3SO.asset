@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f94c6cf65925043b224b84645e5802, type: 3}
+  m_Name: MilatheBakerQuest3SO
+  m_EditorClassIdentifier: 
+  ID: 3
+  Name: Mila the Baker - Quest 3
+  NPCSO: {fileID: 11400000, guid: 92ae33ab213e189468614bf390631868, type: 2}
+  RegionSO: {fileID: 11400000, guid: f3d3293cb3a2961498352739fc4c56d4, type: 2}
+  Description: Bring tomato soup ingredients or cook it yourself.
+  QuestObjectiveList:
+  - IngredientSO: {fileID: 11400000, guid: dfc1c5ae2f25f954ebb08fb8742e33b3, type: 2}
+    RequiredAmount: 2
+    CollectedAmount: 0
+  - IngredientSO: {fileID: 11400000, guid: d31fe1f8d0f445f4e8e09076a2f9b8be, type: 2}
+    RequiredAmount: 1
+    CollectedAmount: 0
+  QuestType: 2
+  MonsterCount: 0
+  ReputationRequired: 100
+  Reward: 25
+  BonusReward: 0
+  Prompt: "\u201CSoup or raw tomatoes? I trust your chef\u2019s instinct.\u201D"
+  Waiting: "\u201CDecide soon, tomatoes don\u2019t last forever.\u201D"
+  Success: "\u201COh, that soup is comforting. You made the right choice.\u201D"
+  Failure: "\u201CI guess raw will have to do.\u201D"
+  QuestStatus: 0

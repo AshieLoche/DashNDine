@@ -1,3 +1,4 @@
+using System;
 using DashNDine.NPCSystem;
 using UnityEngine;
 
@@ -5,21 +6,22 @@ namespace DashNDine.PlayerSystem
 {
     public class PlayerInteraction : MonoBehaviour
     {
+        public Action OnInteractAction;
+
+        [SerializeField] private Player _player;
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _interactDistance;
         private Vector2 _moveDir;
         private Vector2 _lastInteractDir;
-
-        // TODO: CHANGE WHEN NPC IS INTEGRATED
         private NPCInteraction _npcInteraction;
 
         private void Awake()
         {
             _playerInput.OnPlayerInteractAction
-                += PlayerInteraction_OnPlayerInteractAction;
+                += PlayerInput_OnPlayerInteractAction;
             _playerInput.OnPlayerMoveAction
-                += PlayerInteraction_OnPlayerMoveAction;
+                += PlayerInput_OnPlayerMoveAction;
         }
 
         private void OnDestroy()
@@ -28,21 +30,21 @@ namespace DashNDine.PlayerSystem
                 return;
 
             _playerInput.OnPlayerInteractAction
-                -= PlayerInteraction_OnPlayerInteractAction;
+                -= PlayerInput_OnPlayerInteractAction;
             _playerInput.OnPlayerMoveAction
-                -= PlayerInteraction_OnPlayerMoveAction;
+                -= PlayerInput_OnPlayerMoveAction;
         }
 
-        private void PlayerInteraction_OnPlayerInteractAction()
+        private void PlayerInput_OnPlayerInteractAction()
         {
-            // TODO: CHANGE WHEN NPC IS INTEGRATED
             if (_npcInteraction == null)
                 return;
 
-            _npcInteraction.Interaction();
+            _npcInteraction.Interact();
+            OnInteractAction?.Invoke();
         }
 
-        private void PlayerInteraction_OnPlayerMoveAction(Vector2 moveDir)
+        private void PlayerInput_OnPlayerMoveAction(Vector2 moveDir)
             => _moveDir = moveDir;
 
         private void Update()
@@ -62,7 +64,6 @@ namespace DashNDine.PlayerSystem
 
             if (raycastHit2D)
             {
-                // TODO: Interact with NPC
                 if (raycastHit2D.transform.TryGetComponent(out NPCInteraction npcInteraction))
                 {
                     _npcInteraction = npcInteraction;

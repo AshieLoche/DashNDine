@@ -1,3 +1,9 @@
-ID,Name,Region ID,Key
-1,Mila the Baker,1,MtB
-2,Tomo the Scout,1,TtS
+﻿ID,Name,Region ID
+1,Mila the Baker,1
+2,Tomo the Scout,1
+3,Gregor the Miner,2
+4,Kira the Guard,2
+5,Nana the Elder,3
+6,Rico the Kid,3
+7,Valko the Leader,4
+8,Lumi the Forager,4
