@@ -83,5 +83,10 @@ public class EnemyAction : MonoBehaviour
         {
             collision.gameObject.GetComponent<PotManager>().DamagePot();
         }
+        else if (collision.gameObject != null && collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Hit Player");
+            collision.gameObject.GetComponent<PlayerDataManager>().DamagePlayer();
+        }
     }
 }

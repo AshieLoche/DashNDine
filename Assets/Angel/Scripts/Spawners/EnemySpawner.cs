@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<GameObject> spawnedEnemies;
     public List<GameObject> SpawnedEnemies => spawnedEnemies;
     private EnemyPool pool;
+    private int enemyCount;
+    public int EnemyCount => enemyCount;
     private bool isDoneSpawning = false;
     public bool IsDoneSpawning => isDoneSpawning;
 
@@ -25,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
         {
             case enemyType.Ambush:
                 ambushEnemyCount = Random.Range(5, 10);
+                enemyCount = ambushEnemyCount;
                 spawnedEnemies = pool.GetEnemies(ambushEnemyCount);
                 foreach(var e in spawnedEnemies)
                 {
@@ -33,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
                 break;
 
             case enemyType.Defense:
+                enemyCount = defEnemyCount;
                 spawnedEnemies = pool.GetEnemies(defEnemyCount);
                 foreach (var e in spawnedEnemies)
                 {

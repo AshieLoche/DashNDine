@@ -11,50 +11,57 @@ public class ArenaInformation : ScriptableObject
 
 public class ArenaManager : MonoBehaviour
 {
-    [Header("Required Game Items")]
+    [Header("Prerequisites")]
     [SerializeField] private ArenaInformation arenaData;
-    [SerializeField] private EnemySpawner enemySpawner;
-    [SerializeField] private int startTime = 3;
-    private float countDownTime;
-
     private AmbushManager ambushManager;
     private PotDefenseManager potDefenseManager;
 
+    [Header("Start Countdown")]
+    [SerializeField] private int startTime = 3;
+    private float countDownTime;
+    private bool canStart = false, isInCombat = false;
+
     [Header("Scene UI")]
     [SerializeField] private GameObject uiPanel;
+    [SerializeField] private GameObject ambushPanel, defensePanel;   
     [SerializeField] private TextMeshProUGUI countdownTxt;
 
     private void Awake()
     {
-        if (ambushManager == null) gameObject.AddComponent<AmbushManager>();
-        if (potDefenseManager == null) gameObject.AddComponent<PotDefenseManager>();
+        ambushManager = GetComponent<AmbushManager>();
+        potDefenseManager = GetComponent<PotDefenseManager>();
     }
     private void Start()
     {
         countDownTime = startTime;
-        switch (arenaData.enemyType)
-        {
-            case enemyType.Ambush:
-                enemySpawner.SpawnEnemy(enemyType.Ambush); 
-                break;
-            case enemyType.Defense:
-                enemySpawner.SpawnEnemy(enemyType.Defense);
-                break;
-            default: 
-                break;
-        }
     }
     private void Update()
     {
-        if (countDownTime > 0)
+        if (countDownTime > 0 && !canStart)
         {
             countDownTime -= Time.deltaTime;
             UpdateTimerDisplay();
         }
-        else
+        else if (countDownTime <= 0 &&  !canStart)
         {
             countDownTime = 0;
             TimerFinished();
+        }
+
+        if(canStart && !isInCombat)
+        {
+            isInCombat = true;
+            switch (arenaData.enemyType)
+            {
+                case enemyType.Ambush:
+                    ambushManager.StartDefense();
+                    break;
+                case enemyType.Defense:
+                    potDefenseManager.StartPotDefense();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -67,7 +74,20 @@ public class ArenaManager : MonoBehaviour
     void TimerFinished()
     {
         uiPanel.SetActive(false);
+        switch (arenaData.enemyType)
+        {
+            case enemyType.Ambush:
+                ambushPanel.SetActive(true);
+                break;
+            case enemyType.Defense:
+                defensePanel.SetActive(true);
+                break;
+            default:
+                break;
+        }
+
         Debug.Log("Countdown finished!");
+        canStart = true;
     }
 
 }

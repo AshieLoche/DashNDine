@@ -24,6 +24,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float playerDistance, spawnPtDistance, moveDistanceThreshold;
     private bool isLookingRight, isMoving;
 
+    [Header("Player Data")]
+    [SerializeField] PlayerDataManager playerDataManager;
+
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI qteText;
 
@@ -46,6 +49,7 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         InitializeEnemy();
+        playerDataManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDataManager>();
     }
 
     private void OnEnable()
@@ -138,6 +142,7 @@ public class EnemyManager : MonoBehaviour
 
     public void Die()
     {
+        playerDataManager.EnemyKilled();
         enemyMovement.ReturnToPosition();
         enemyAction.DisableEnemy();
     }

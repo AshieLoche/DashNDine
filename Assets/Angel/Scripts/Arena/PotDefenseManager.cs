@@ -12,10 +12,14 @@ public class PotDefenseManager : MonoBehaviour
     private PotManager potManager;
 
     [Header("Enemies")]
-    [SerializeField] private int remainingEnemies;
+    [SerializeField] private int remainingEnemies = 0;
     private EnemySpawner spawner;
     [SerializeField] private float minDelay = 1f;
     [SerializeField] private float maxDelay = 3f;
+
+    [Header("Player Kill")]
+    [SerializeField] private PlayerData playerData;
+    private int killCount;
 
     [Header("Arena UI")]
     [SerializeField] private TextMeshProUGUI remainingEnemiesTxt;
@@ -38,7 +42,7 @@ public class PotDefenseManager : MonoBehaviour
 
         SummonPot();
         spawner.SpawnEnemy(enemyType.Defense);
-
+        remainingEnemies = spawner.EnemyCount - playerData.killedEnemies;
         if (spawner.IsDoneSpawning)
         {
             StartCoroutine(SummonEnemies());
@@ -55,12 +59,8 @@ public class PotDefenseManager : MonoBehaviour
 
         if (isOngoing)
         {
-            remainingEnemies = 0;
-            foreach (var e in spawner.SpawnedEnemies)
-            {
-                if (e.activeSelf)
-                    remainingEnemies++;
-            }
+            killCount = playerData.killedEnemies;
+            remainingEnemies = spawner.EnemyCount - killCount;
             remainingEnemiesTxt.text = remainingEnemies.ToString();
             potHpTxt.text = potManager.CurrentHP.ToString();
         }
