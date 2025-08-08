@@ -83,6 +83,10 @@ public class EnemyManager : MonoBehaviour
 
 
     }
+    public void SetEnemyType(enemyType type)
+    {
+        enemyType = type;
+    }
 
     private void InitializeEnemy()
     {

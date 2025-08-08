@@ -10,7 +10,7 @@ public class EnemyPool : MonoBehaviour
     [SerializeField] private List<GameObject> standbyEnemies;
     private bool isInstantiating;
 
-    void Start()
+    void Awake()
     {
         isInstantiating = true;
     }

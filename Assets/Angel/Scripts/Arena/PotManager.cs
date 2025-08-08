@@ -4,8 +4,11 @@ public class PotManager : MonoBehaviour
 {
     [SerializeField] private int maxHP = 5;
     [SerializeField] private int currentHP;
+    public int CurrentHP => currentHP;
+
     [SerializeField] private GameObject spawnVFX, dmgVFX, destroyVFX;
     [SerializeField] private AudioClip spawnSFX, dmgSFX, destroyedSFX;
+
     [SerializeField] private PotDefenseManager defenseManager;
     private AudioSource audioSrc;
     private bool isBeingDestroyed = false;

@@ -25,6 +25,7 @@ public class EnemyUI : MonoBehaviour
     {
         if (sequenceLabel != null)
             sequenceLabel.text = sequenceTxt;
+        sequenceLabel.gameObject.transform.eulerAngles = Vector3.zero;
     }
 
     public void SetSequence(TextMeshProUGUI qteText, List<int> seq)
