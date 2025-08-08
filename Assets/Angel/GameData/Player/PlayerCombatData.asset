@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb8fedda93d8e8e44937f78b23193773, type: 3}
   m_Name: PlayerCombatData
   m_EditorClassIdentifier: 
-  maxHP: 10
-  currentHP: 0
+  maxHP: 100
+  currentHP: 100
   Reputation: 0
   killedEnemies: 0
+  inArena: 0
+  maxAmbushCDTime: 10
+  minAmbushCDTime: 7
+  ambushTimer: 0

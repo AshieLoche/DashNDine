@@ -36,7 +36,7 @@ public class PotDefenseManager : MonoBehaviour
         start = false;
     }
 
-    public void StartPotDefense()
+    public void StartPotDefense(Difficulty difficulty)
     {
         isOngoing = true;
 
@@ -45,7 +45,7 @@ public class PotDefenseManager : MonoBehaviour
         remainingEnemies = spawner.EnemyCount - playerData.killedEnemies;
         if (spawner.IsDoneSpawning)
         {
-            StartCoroutine(SummonEnemies());
+            StartCoroutine(SummonEnemies(difficulty));
         }
     }
 
@@ -54,7 +54,7 @@ public class PotDefenseManager : MonoBehaviour
     {
         if(start && !isOngoing)
         {
-            StartPotDefense();
+            StartPotDefense(Difficulty.Easy);
         }
 
         if (isOngoing)
@@ -63,6 +63,9 @@ public class PotDefenseManager : MonoBehaviour
             remainingEnemies = spawner.EnemyCount - killCount;
             remainingEnemiesTxt.text = remainingEnemies.ToString();
             potHpTxt.text = potManager.CurrentHP.ToString();
+
+            if (remainingEnemies == 0)
+                PotDefenseSuccesful();
         }
     }
 
@@ -74,17 +77,23 @@ public class PotDefenseManager : MonoBehaviour
         }
         pot.SetActive(true);
     }
+    void PotDefenseSuccesful()
+    {
+        Debug.Log("Defense Successful!");
+        isOngoing = false;
+    }
     public void PotDestroyed()
     {
         Debug.Log("Pot has been destroyed. Defense failed...");
         isOngoing = false;
     }
 
-    IEnumerator SummonEnemies()
+    IEnumerator SummonEnemies(Difficulty diff)
     {
         foreach (var e in spawner.SpawnedEnemies)
         {
             e.GetComponent<EnemyManager>().SetEnemyType(enemyType.Defense);
+            e.GetComponent<EnemyManager>().SetDifficulty(diff);
             e.SetActive(true);
             float delay = Random.Range(minDelay, maxDelay);
             yield return new WaitForSeconds(delay);

@@ -54,10 +54,10 @@ public class ArenaManager : MonoBehaviour
             switch (arenaData.enemyType)
             {
                 case enemyType.Ambush:
-                    ambushManager.StartDefense();
+                    ambushManager.StartDefense(arenaData.difficulty);
                     break;
                 case enemyType.Defense:
-                    potDefenseManager.StartPotDefense();
+                    potDefenseManager.StartPotDefense(arenaData.difficulty);
                     break;
                 default:
                     break;

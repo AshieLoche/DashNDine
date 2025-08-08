@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,7 +30,7 @@ public class AmbushManager : MonoBehaviour
 
         start = false;
     }
-    public void StartDefense()
+    public void StartDefense(Difficulty difficulty)
     {
         isOngoing = true;
         Instantiate(player);
@@ -37,7 +38,7 @@ public class AmbushManager : MonoBehaviour
 
         if (spawner.IsDoneSpawning)
         {
-            StartCoroutine(SummonEnemies());
+            StartCoroutine(SummonEnemies(difficulty));
         }
     }
     // Update is called once per frame
@@ -45,7 +46,7 @@ public class AmbushManager : MonoBehaviour
     {
         if (start && !isOngoing)
         {
-            StartDefense();
+            StartDefense(Difficulty.Easy);
         }
 
         if (isOngoing)
@@ -68,11 +69,12 @@ public class AmbushManager : MonoBehaviour
             }
         }
     }
-    IEnumerator SummonEnemies()
+    IEnumerator SummonEnemies(Difficulty d)
     {
         foreach (var e in spawner.SpawnedEnemies)
         {
             e.GetComponent<EnemyManager>().SetEnemyType(enemyType.Defense);
+            e.GetComponent<EnemyManager>().SetDifficulty(d);
             e.SetActive(true);
             float delay = Random.Range(minDelay, maxDelay);
             yield return new WaitForSeconds(delay);

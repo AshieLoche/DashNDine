@@ -13,8 +13,8 @@ public class AudioManager : MonoBehaviour
     {
         foreach (AudioSource source in sfxAudioSources)
         {
-            source.volume = volumeData.sfxVolume;
+            source.volume = volumeData.sfxVolume / 100;
         }
-        bgmAudioSource.volume = volumeData.bgmVolume;
+        bgmAudioSource.volume = volumeData.bgmVolume / 100;
     }
 }
