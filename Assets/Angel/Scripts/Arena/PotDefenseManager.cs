@@ -85,12 +85,13 @@ public class PotDefenseManager : MonoBehaviour
     void PotDefenseSuccesful()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDataManager>().DoneCooking();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDataManager>().DoneCooking();
+        Debug.Log("Defense Successful!");
+        isOngoing = false;
         if (SceneManager.GetSceneByName("DefenseArena").isLoaded)
         {
             SceneManager.UnloadSceneAsync("DefenseArena");
         }
-        Debug.Log("Defense Successful!");
-        isOngoing = false;
     }
     public void PotDestroyed()
     {

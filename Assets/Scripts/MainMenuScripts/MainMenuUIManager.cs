@@ -38,6 +38,8 @@ public class MainMenuUIManager : MonoBehaviour
         bgmVolumeSlider.onValueChanged.AddListener(UpdateBGMVolumeLevel);
         
         playerData.currentHP = playerData.maxHP;
+        playerData.Reputation = 0;
+        playerData.killedEnemies = 0;
     }
 
     // Update is called once per frame

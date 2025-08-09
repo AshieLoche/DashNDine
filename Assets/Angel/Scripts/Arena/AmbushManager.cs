@@ -56,12 +56,7 @@ public class AmbushManager : MonoBehaviour
                 if(e.activeSelf) e.GetComponent<EnemyManager>().MoveEnemy(player);
             }
 
-            remainingEnemies = 0;
-            foreach (var e in spawner.SpawnedEnemies)
-            {
-                if (e.activeSelf)
-                    remainingEnemies++;
-            }
+            remainingEnemies = spawner.EnemyCount - player.GetComponent<PlayerDataManager>().KilledEnemies;
             remainingEnemiesTxt.text = remainingEnemies.ToString();
 
             if(remainingEnemies == 0)

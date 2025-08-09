@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e596d34b25747e4b84f730c82820317, type: 3}
   m_Name: ArenaData
   m_EditorClassIdentifier: 
-  enemyType: 2
+  enemyType: 0
   difficulty: 0

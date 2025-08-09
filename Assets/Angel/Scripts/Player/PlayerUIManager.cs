@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerUIManager : MonoBehaviour
 {
     [SerializeField] PlayerData playerData;
-    [SerializeField] PlayerSO playerSO;
 
     [Header("UI")]
     [SerializeField] private Slider hpSlider;
@@ -19,6 +18,6 @@ public class PlayerUIManager : MonoBehaviour
     {
         hpSlider.value = playerData.currentHP;
         hpValue.text = hpSlider.value.ToString();
-        reputationValue.text = playerSO.ReputationAmount.ToString();
+        reputationValue.text = playerData.Reputation.ToString();
     }
 }

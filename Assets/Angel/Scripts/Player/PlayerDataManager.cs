@@ -28,6 +28,7 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerData.killedEnemies = 0;
         killedEnemies = 0;
+        arenaData.enemyType = enemyType.Ambush;
         ambushCDTime = Random.Range(playerData.minAmbushCDTime, playerData.maxAmbushCDTime);
         playerData.ambushTimer = 0;
         playerData.inArena = false;
@@ -54,9 +55,9 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerData.currentHP = hp;  
     }
-    public void ChangeReputation(int reputation)
+    public void AddReputation(int reputation)
     {
-        playerData.Reputation = reputation;
+        playerData.Reputation += reputation;
     }
     public void EnemyKilled()
     {
@@ -95,6 +96,7 @@ public class PlayerDataManager : MonoBehaviour
     }
     public void ResetAmbushTimer()
     {
+
         audioManager.playNorm();
         player.transform.position = posBeforeArena;
         playerData.inArena = false;
