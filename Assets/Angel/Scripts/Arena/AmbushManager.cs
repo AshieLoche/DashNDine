@@ -33,7 +33,7 @@ public class AmbushManager : MonoBehaviour
     public void StartDefense(Difficulty difficulty)
     {
         isOngoing = true;
-        Instantiate(player);
+        if (player == null) player = GameObject.FindWithTag("Player");
         spawner.SpawnEnemy(enemyType.Ambush);
 
         if (spawner.IsDoneSpawning)
@@ -51,6 +51,11 @@ public class AmbushManager : MonoBehaviour
 
         if (isOngoing)
         {
+            foreach (var e in spawner.SpawnedEnemies)
+            {
+                e.GetComponent<EnemyManager>().MoveEnemy(player);
+            }
+
             remainingEnemies = 0;
             foreach (var e in spawner.SpawnedEnemies)
             {
@@ -78,8 +83,6 @@ public class AmbushManager : MonoBehaviour
             e.SetActive(true);
             float delay = Random.Range(minDelay, maxDelay);
             yield return new WaitForSeconds(delay);
-
-            e.GetComponent<EnemyManager>().MoveEnemy(player);
         }
     }
 }

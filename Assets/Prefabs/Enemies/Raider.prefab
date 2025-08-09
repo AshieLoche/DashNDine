@@ -429,14 +429,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3224011751919264201}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -466,10 +466,11 @@ MonoBehaviour:
   target: {fileID: 0}
   qteSequence: 
   startingPosition: {x: 0, y: 0, z: 0}
-  range: 2
+  range: 4
   playerDistance: 0
   spawnPtDistance: 0
   moveDistanceThreshold: 4
+  playerDataManager: {fileID: 0}
   qteText: {fileID: 4041873360220820216}
 --- !u!114 &3747112223627294831
 MonoBehaviour:

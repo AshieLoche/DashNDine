@@ -12,13 +12,17 @@ public class PlayerDataManager : MonoBehaviour
     private int killedEnemies;
     public int KilledEnemies => killedEnemies;
 
-    [Header("Ambush Timer")]
+    [Header("Arena Data")]
+    [SerializeField] ArenaData arenaData;
     [SerializeField] float ambushCDTime;
+    private Vector2 posBeforeArena;
     private void Start()
     {
         playerData.killedEnemies = 0;
         killedEnemies = 0;
         ambushCDTime = Random.Range(playerData.minAmbushCDTime, playerData.maxAmbushCDTime);
+        playerData.ambushTimer = 0;
+        playerData.inArena = false;
     }
     private void Update()
     {
@@ -55,18 +59,22 @@ public class PlayerDataManager : MonoBehaviour
     }
     public void ResetAmbushTimer()
     {
-        playerData.ambushTimer = 0;
+        transform.position = posBeforeArena;
         playerData.inArena = false;
+        playerData.killedEnemies = 0;
+        playerData.ambushTimer = 0;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Combat Area")
+        if (collision.gameObject.name == "Combat Area" && arenaData.enemyType == enemyType.Ambush && !playerData.inArena)
         {
             playerData.ambushTimer = Mathf.Clamp(playerData.ambushTimer + Time.deltaTime, 0, ambushCDTime);
             if(playerData.ambushTimer == ambushCDTime)
             {
-                SceneManager.LoadScene("DefenseArena", LoadSceneMode.Additive);
+                posBeforeArena = transform.position;
                 playerData.inArena = true;
+                SceneManager.LoadScene("DefenseArena", LoadSceneMode.Additive);
+                transform.position = new Vector2(-18, -38);
             }
         }
     }

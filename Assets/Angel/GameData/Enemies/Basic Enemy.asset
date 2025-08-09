@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4a66d71afc4f9409aa65f2657f06cc, type: 3}
   m_Name: Basic Enemy
   m_EditorClassIdentifier: 
-  type: 
-  image: {fileID: 0}
-  baseSpeed: 0
-  baseDmg: 0
+  type: Basic Enemy
+  image: {fileID: -6587562732477109694, guid: 8f3a833c85ae4b9498f1d50ecd5ff57a, type: 3}
+  baseSpeed: 0.2
+  baseDmg: 1
   difficulty: 0
-  controller: {fileID: 0}
+  controller: {fileID: 8240579415993794731, guid: b34f793c9dd2b84429f39a7cf2ed704d, type: 3}
   notes: 

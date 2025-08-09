@@ -2,17 +2,10 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptables/Arena Information")]
-public class ArenaInformation : ScriptableObject
-{
-    public enemyType enemyType;
-    public Difficulty difficulty;
-}
-
 public class ArenaManager : MonoBehaviour
 {
     [Header("Prerequisites")]
-    [SerializeField] private ArenaInformation arenaData;
+    [SerializeField] private ArenaData arenaData;
     private AmbushManager ambushManager;
     private PotDefenseManager potDefenseManager;
 
