@@ -1,4 +1,7 @@
 using System;
+using DashNDine.CoreSystem;
+using DashNDine.ScriptableObjectSystem;
+using DashNDine.UISystem;
 using UnityEngine;
 
 namespace DashNDine.PlayerSystem
@@ -20,7 +23,9 @@ namespace DashNDine.PlayerSystem
         [SerializeField] private Vector3 _originOffsetDepth;
         [SerializeField] private Vector2 _boxSizeDepth;
         private Vector2 _moveDir;
-        public bool _canMove = true;
+        private bool _canMove = true;
+        private ChoicesUI _choicesUI;
+        private BaseInteraction _baseInteraction;
 
         private void Awake()
         {
@@ -28,6 +33,16 @@ namespace DashNDine.PlayerSystem
                 += PlayerInteraction_OnPlayerMoveAction;
             _playerInteraction.OnInteractAction
                 += PlayerInteraction_OnPlayerInteractAction;
+        }
+
+        private void Start()
+        {
+            _choicesUI = ChoicesUI.Instance;
+
+            _choicesUI.OnAcceptAction
+                += ChoicesUI_OnAcceptAction;
+            _choicesUI.OnLeaveAction
+                += ChoicesUI_OnLeaveAction;
         }
 
         private void OnDestroy()
@@ -39,27 +54,44 @@ namespace DashNDine.PlayerSystem
             if (_playerInteraction != null)
                 _playerInteraction.OnInteractAction
                     -= PlayerInteraction_OnPlayerInteractAction;
+
+            if (_choicesUI != null)
+            {
+                _choicesUI.OnAcceptAction
+                    -= ChoicesUI_OnAcceptAction;
+                _choicesUI.OnLeaveAction
+                    -= ChoicesUI_OnLeaveAction;
+            }
         }
 
+        private void ChoicesUI_OnAcceptAction(QuestSO sO)
+            => SetCanMove(true);
+
+        private void ChoicesUI_OnLeaveAction()
+            => SetCanMove(true);
+
         private void PlayerInteraction_OnPlayerInteractAction()
-            => _canMove = false;
+            => SetCanMove(false);
 
         private void PlayerInteraction_OnPlayerMoveAction(Vector2 moveDir)
             => _moveDir = moveDir;
+
+        private void SetCanMove(bool canMove)
+            => _canMove = canMove;
 
         private void Update()
         {
             if (!_canMove)
                 return;
 
-            HandleCover();
+            // HandleCover();
             HandleMovement();
         }
 
         private void HandleCover()
         {
             // If colliding then IsBehind, else then  IsInFront
-            bool isInFront = !IsColliding(_originOffsetDepth, _boxSizeDepth, _moveDir);
+            bool isInFront = !GetCollision(_originOffsetDepth, _boxSizeDepth, _moveDir);
 
             if (isInFront)
                 OnPlayerInFrontAction?.Invoke();
@@ -69,32 +101,67 @@ namespace DashNDine.PlayerSystem
 
         private void HandleMovement()
         {
-            bool canMove = !IsColliding(_originOffsetMove, _boxSizeMove, _moveDir);
+            Vector2 moveDir = _moveDir;
+
+            RaycastHit2D raycastHit2D = GetCollision(_originOffsetMove, _boxSizeMove, moveDir);
+
+            if (raycastHit2D)
+            {
+                int layer = raycastHit2D.collider.gameObject.layer;
+                LayerMask mask = LayerMask.GetMask("Ingredient", "NPC");
+
+                if ((mask & (1 << layer)) != 0)
+                {
+                    if (raycastHit2D.transform.TryGetComponent(out BaseInteraction baseInteraction))
+                    {
+                        _baseInteraction = baseInteraction;
+                        baseInteraction.OnLookedAt();
+                    }
+                }
+                else
+                {
+                    if (_baseInteraction != null)
+                    {
+                        _baseInteraction.OnLookedAway();
+                        _baseInteraction = null;
+                    }
+                }
+            }
+            else
+            {
+                if (_baseInteraction != null)
+                {
+                    _baseInteraction.OnLookedAway();
+                    _baseInteraction = null;
+                }
+            }
+
+            bool canMove = !raycastHit2D;
 
             if (!canMove)
             {
                 // Cannot Move towards moveDir
 
                 //Attemp only X movement
-                Vector2 moveDirX = new Vector2(_moveDir.x, 0f).normalized;
+                Vector2 moveDirX = new Vector2(moveDir.x, 0f).normalized;
 
-                canMove = !IsColliding(_originOffsetMove, _boxSizeMove, moveDirX);
+                canMove = !GetCollision(_originOffsetMove, _boxSizeMove, moveDirX);
 
                 if (canMove)
                     // Can move only on the x
-                    _moveDir = moveDirX;
+                    moveDir = moveDirX;
                 else
                 {
                     // Cannot move only on the X
 
                     // Attempt only Z movement
-                    Vector2 moveDirY = new Vector2(0f, _moveDir.y).normalized;
+                    Vector2 moveDirY = new Vector2(0f, moveDir.y).normalized;
 
-                    canMove = !IsColliding(_originOffsetMove, _boxSizeMove, moveDirY);
+                    canMove = !GetCollision(_originOffsetMove, _boxSizeMove, moveDirY);
 
                     if (canMove)
                         // Can move only on the Z
-                        _moveDir = moveDirY;
+                        moveDir = moveDirY;
                     else
                     {
                         // Cannot move in any direction
@@ -103,11 +170,11 @@ namespace DashNDine.PlayerSystem
             }
 
             if (canMove)
-                transform.position += (Vector3)(GetMoveDistance() * _moveDir);
+                transform.position += (Vector3)(GetMoveDistance() * moveDir);
 
-            OnPlayerRotateAction?.Invoke(_moveDir.x);
+            OnPlayerRotateAction?.Invoke(moveDir.x);
 
-            if (_moveDir == Vector2.zero)
+            if (moveDir == Vector2.zero)
                 OnPlayerIdleAction?.Invoke();
             else
                 OnPlayerMoveAction?.Invoke();
@@ -116,12 +183,12 @@ namespace DashNDine.PlayerSystem
         private float GetMoveDistance()
             => _moveSpeed * Time.deltaTime;
 
-        private bool IsColliding(Vector3 originOffset, Vector2 boxSize, Vector2 moveDir)
+        private RaycastHit2D GetCollision(Vector3 originOffset, Vector2 boxSize, Vector2 moveDir)
         {
             Vector2 origin = transform.position + originOffset;
             float angle = 0f;
 
-            bool isColliding = Physics2D.BoxCast(
+            return Physics2D.BoxCast(
                 origin,
                 boxSize,
                 angle,
@@ -129,8 +196,6 @@ namespace DashNDine.PlayerSystem
                 GetMoveDistance(),
                 _layerMask
             );
-
-            return isColliding;
         }
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public QuestManager questManager;
+    public QuestManager1 questManager;
     public DialogueManager dialogueManager;
     public static GameManager Instance { get; private set; }
     private void Awake()

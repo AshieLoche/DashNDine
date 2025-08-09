@@ -9,7 +9,7 @@ namespace DashNDine.GameInputSystem
 {
     public class PlayerInputManager : SingletonBehaviour<PlayerInputManager>, InputSystem_Actions.IPlayerActions
     {
-        public Action OnDialoguePerformedAction;
+        public Action OnDialogueSkipPerformedAction;
         public Action OnInteractPerformedAction;
         public Action<Vector2> OnMoveAction;
         public Action<QuickTimeEventButton> OnQuickTimeEventPerformedAction;
@@ -44,10 +44,10 @@ namespace DashNDine.GameInputSystem
         // TODO: ADD ESCAPE TO UI INPUTS
 
         // TODO: MOVE DIALOGUE TO UI INPUTS
-        public void OnDialogue(InputAction.CallbackContext context)
+        public void OnDialogueSkip(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnDialoguePerformedAction?.Invoke();
+                OnDialogueSkipPerformedAction?.Invoke();
         }
 
         public void OnInteract(InputAction.CallbackContext context)

@@ -10,7 +10,8 @@ namespace DashNDine.PlayerSystem
 
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private Animator _animator;
-        [SerializeField] private float _animationSpeed;
+        [SerializeField] private float _walkAnimationSpeed;
+        [SerializeField] private float _idleAnimationSpeed;
 
         private void Awake()
         {
@@ -42,7 +43,7 @@ namespace DashNDine.PlayerSystem
 
         private void TriggerAnimation(string trigger)
         {
-            _animator.speed = _animationSpeed;
+            _animator.speed = (trigger == WALK_TRIGGER) ? _walkAnimationSpeed : _idleAnimationSpeed;
             ResetAllTriggerAnimation();
             _animator.SetTrigger(trigger);
         }

@@ -5,5 +5,11 @@ namespace DashNDine.EnumSystem
         Return,
         Cook,
         Choose
+        // Keep,
+        // Give,
+        // CookKeep,
+        // CookGive,
+        // Choice,
+        // CookChoice
     }
 }

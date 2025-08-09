@@ -418,7 +418,7 @@ namespace DashNDine.EditorSystem
 
                     if (int.TryParse(qoSeparated[1], out int requiredAmount))
                     {
-                        questObjectiveList.Add(new QuestObjective(ingredientSO, requiredAmount, 0));
+                        questObjectiveList.Add(new QuestObjective(ingredientSO, requiredAmount));
                     }
                     else
                         Debug.LogError($"Cannot convert {qoSeparated[1]} to int");

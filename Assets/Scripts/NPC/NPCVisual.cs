@@ -13,8 +13,8 @@ namespace DashNDine.NPCSystem
             if (_spriteRenderer == null)
                 _spriteRenderer = GetComponent<SpriteRenderer>();
 
-            _npcInteraction.OnInteractAction
-                += NPCInteraction_OnInteractAction;
+            _npcInteraction.OnInteractWithParamAction
+                += NPCInteraction_OnInteractWithParamAction;
         }
 
         private void OnDestroy()
@@ -22,11 +22,11 @@ namespace DashNDine.NPCSystem
             if (_npcInteraction == null)
                 return;
 
-            _npcInteraction.OnInteractAction
-                -= NPCInteraction_OnInteractAction;
+            _npcInteraction.OnInteractWithParamAction
+                -= NPCInteraction_OnInteractWithParamAction;
         }
 
-        private void NPCInteraction_OnInteractAction(Vector3 playerPosition)
+        private void NPCInteraction_OnInteractWithParamAction(Vector3 playerPosition)
         {
             float dir = Vector2.Dot(transform.right, playerPosition - transform.position);
 
