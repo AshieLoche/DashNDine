@@ -16,9 +16,9 @@ namespace DashNDine.PlayerSystem
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private Vector3 _originOffsetMove;
-        [SerializeField] private Vector2 _capsuleSizeMove;
+        [SerializeField] private Vector2 _boxSizeMove;
         [SerializeField] private Vector3 _originOffsetDepth;
-        [SerializeField] private Vector2 _capsuleSizeDepth;
+        [SerializeField] private Vector2 _boxSizeDepth;
         private Vector2 _moveDir;
         public bool _canMove = true;
 
@@ -59,7 +59,7 @@ namespace DashNDine.PlayerSystem
         private void HandleCover()
         {
             // If colliding then IsBehind, else then  IsInFront
-            bool isInFront = !IsColliding(_originOffsetDepth, _capsuleSizeDepth, _moveDir);
+            bool isInFront = !IsColliding(_originOffsetDepth, _boxSizeDepth, _moveDir);
 
             if (isInFront)
                 OnPlayerInFrontAction?.Invoke();
@@ -69,7 +69,7 @@ namespace DashNDine.PlayerSystem
 
         private void HandleMovement()
         {
-            bool canMove = !IsColliding(_originOffsetMove, _capsuleSizeMove, _moveDir);
+            bool canMove = !IsColliding(_originOffsetMove, _boxSizeMove, _moveDir);
 
             if (!canMove)
             {
@@ -78,7 +78,7 @@ namespace DashNDine.PlayerSystem
                 //Attemp only X movement
                 Vector2 moveDirX = new Vector2(_moveDir.x, 0f).normalized;
 
-                canMove = !IsColliding(_originOffsetMove, _capsuleSizeMove, moveDirX);
+                canMove = !IsColliding(_originOffsetMove, _boxSizeMove, moveDirX);
 
                 if (canMove)
                     // Can move only on the x
@@ -90,7 +90,7 @@ namespace DashNDine.PlayerSystem
                     // Attempt only Z movement
                     Vector2 moveDirY = new Vector2(0f, _moveDir.y).normalized;
 
-                    canMove = !IsColliding(_originOffsetMove, _capsuleSizeMove, moveDirY);
+                    canMove = !IsColliding(_originOffsetMove, _boxSizeMove, moveDirY);
 
                     if (canMove)
                         // Can move only on the Z
@@ -111,22 +111,19 @@ namespace DashNDine.PlayerSystem
                 OnPlayerIdleAction?.Invoke();
             else
                 OnPlayerMoveAction?.Invoke();
-            // _isWalking = moveDir != Vector3.zero;
         }
 
         private float GetMoveDistance()
             => _moveSpeed * Time.deltaTime;
 
-        private bool IsColliding(Vector3 originOffset, Vector2 capsuleSize, Vector2 moveDir)
+        private bool IsColliding(Vector3 originOffset, Vector2 boxSize, Vector2 moveDir)
         {
             Vector2 origin = transform.position + originOffset;
-            CapsuleDirection2D capsuleDirection2D = CapsuleDirection2D.Vertical;
             float angle = 0f;
 
-            bool isColliding = Physics2D.CapsuleCast(
+            bool isColliding = Physics2D.BoxCast(
                 origin,
-                capsuleSize,
-                capsuleDirection2D,
+                boxSize,
                 angle,
                 moveDir,
                 GetMoveDistance(),
