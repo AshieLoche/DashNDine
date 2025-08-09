@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2118932193660951356
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32,7 +32,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1349445809718597025}
-  m_Father: {fileID: 7520141807220479943}
+  m_Father: {fileID: 5293337285691180154}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 1448508571473430565}
   - component: {fileID: 2209036948901781886}
   - component: {fileID: 7946920519591974551}
+  - component: {fileID: 111593935559023827}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -273,6 +274,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &111593935559023827
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221452257729504289}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6002030780024083397
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,7 +802,6 @@ RectTransform:
   m_Children:
   - {fileID: 1448508571473430565}
   - {fileID: 5293337285691180154}
-  - {fileID: 2118932193660951356}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -961,6 +973,7 @@ GameObject:
   - component: {fileID: 5293337285691180154}
   - component: {fileID: 3521132329805000504}
   - component: {fileID: 6452376940722612795}
+  - component: {fileID: 2072084921704839707}
   m_Layer: 5
   m_Name: GameWinPanel
   m_TagString: Untagged
@@ -983,6 +996,7 @@ RectTransform:
   - {fileID: 758652215783593458}
   - {fileID: 3806077849354367863}
   - {fileID: 2868924899480916096}
+  - {fileID: 2118932193660951356}
   m_Father: {fileID: 7520141807220479943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1028,6 +1042,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &2072084921704839707
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106948531416584640}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8145576575922046969
 GameObject:
   m_ObjectHideFlags: 0

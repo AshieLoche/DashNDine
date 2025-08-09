@@ -53,7 +53,7 @@ public class AmbushManager : MonoBehaviour
         {
             foreach (var e in spawner.SpawnedEnemies)
             {
-                e.GetComponent<EnemyManager>().MoveEnemy(player);
+                if(e.activeSelf) e.GetComponent<EnemyManager>().MoveEnemy(player);
             }
 
             remainingEnemies = 0;

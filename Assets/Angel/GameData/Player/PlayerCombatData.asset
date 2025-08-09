@@ -16,7 +16,7 @@ MonoBehaviour:
   currentHP: 100
   Reputation: 0
   killedEnemies: 0
-  inArena: 1
+  inArena: 0
   maxAmbushCDTime: 10
   minAmbushCDTime: 7
-  ambushTimer: 7.5305796
+  ambushTimer: 0

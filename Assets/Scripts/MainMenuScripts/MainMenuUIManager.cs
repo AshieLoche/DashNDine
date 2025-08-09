@@ -22,6 +22,8 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private Slider sfxVolumeSlider, bgmVolumeSlider;
     [SerializeField] private TextMeshProUGUI sfxVolumeLevelTxt, bgmVolumeTxt;
 
+    [Header("Player")]
+    [SerializeField] private PlayerData playerData;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,7 +36,8 @@ public class MainMenuUIManager : MonoBehaviour
 
         sfxVolumeSlider.onValueChanged.AddListener(UpdateSFXVolumeLevel);
         bgmVolumeSlider.onValueChanged.AddListener(UpdateBGMVolumeLevel);
-
+        
+        playerData.currentHP = playerData.maxHP;
     }
 
     // Update is called once per frame

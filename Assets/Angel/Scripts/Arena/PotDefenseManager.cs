@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PotDefenseManager : MonoBehaviour
 {
@@ -59,6 +60,10 @@ public class PotDefenseManager : MonoBehaviour
 
         if (isOngoing)
         {
+            foreach(var e in spawner.SpawnedEnemies)
+            {
+                if(e.activeSelf) e.GetComponent<EnemyManager>().MoveEnemy(pot);
+            }
             killCount = playerData.killedEnemies;
             remainingEnemies = spawner.EnemyCount - killCount;
             remainingEnemiesTxt.text = remainingEnemies.ToString();
@@ -79,6 +84,11 @@ public class PotDefenseManager : MonoBehaviour
     }
     void PotDefenseSuccesful()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDataManager>().DoneCooking();
+        if (SceneManager.GetSceneByName("DefenseArena").isLoaded)
+        {
+            SceneManager.UnloadSceneAsync("DefenseArena");
+        }
         Debug.Log("Defense Successful!");
         isOngoing = false;
     }
@@ -86,6 +96,11 @@ public class PotDefenseManager : MonoBehaviour
     {
         Debug.Log("Pot has been destroyed. Defense failed...");
         isOngoing = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDataManager>().FailedCooking();
+        if (SceneManager.GetSceneByName("DefenseArena").isLoaded)
+        {
+            SceneManager.UnloadSceneAsync("DefenseArena");
+        }
     }
 
     IEnumerator SummonEnemies(Difficulty diff)
@@ -98,7 +113,6 @@ public class PotDefenseManager : MonoBehaviour
             float delay = Random.Range(minDelay, maxDelay);
             yield return new WaitForSeconds(delay);
 
-            e.GetComponent<EnemyManager>().MoveEnemy(pot);
         }
     }
 }

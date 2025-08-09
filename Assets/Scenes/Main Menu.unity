@@ -3884,6 +3884,7 @@ MonoBehaviour:
   bgmVolumeSlider: {fileID: 384809238}
   sfxVolumeLevelTxt: {fileID: 452633107}
   bgmVolumeTxt: {fileID: 617752447}
+  playerData: {fileID: 11400000, guid: bae6cfd180ccb394e92c83249647cab0, type: 2}
 --- !u!4 &1662573429
 Transform:
   m_ObjectHideFlags: 0

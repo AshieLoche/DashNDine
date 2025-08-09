@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDataManager : MonoBehaviour
 {
+    [Header("For Debugging Only")]
+    [SerializeField] private bool triggerDefense = false;
     [Header("Player Data")]
     [SerializeField] private PlayerData playerData;
     [SerializeField] GameObject player;
@@ -29,7 +31,7 @@ public class PlayerDataManager : MonoBehaviour
         ambushCDTime = Random.Range(playerData.minAmbushCDTime, playerData.maxAmbushCDTime);
         playerData.ambushTimer = 0;
         playerData.inArena = false;
-        playerData.currentHP = playerData.maxHP;
+
     }
     private void Update()
     {
@@ -41,7 +43,12 @@ public class PlayerDataManager : MonoBehaviour
         {
             Debug.Log("Player Died");
             Die();
-        } 
+        }
+        if (triggerDefense)
+        {
+            triggerDefense = false;
+            CookFood();
+        }
     }
     public void ChangeHP(int hp)
     {
@@ -54,6 +61,27 @@ public class PlayerDataManager : MonoBehaviour
     public void EnemyKilled()
     {
         playerData.killedEnemies++;
+    }
+    public void CookFood()
+    {
+        arenaData.enemyType = enemyType.Defense;
+        playerData.inArena = true;
+        audioManager.playAmbush();
+        SceneManager.LoadScene("DefenseArena", LoadSceneMode.Additive);
+    }
+    public void DoneCooking()
+    {
+        playerData.inArena = false;
+        arenaData.enemyType = enemyType.Ambush;
+        audioManager.playNorm();
+        SceneManager.LoadScene("DefenseArena", LoadSceneMode.Additive);
+    }
+    public void FailedCooking()
+    {
+        playerData.inArena = false;
+        arenaData.enemyType = enemyType.Ambush;
+        audioManager.playNorm();
+        SceneManager.LoadScene("DefenseArena", LoadSceneMode.Additive);
     }
     public void DamagePlayer(int dmg)
     {
