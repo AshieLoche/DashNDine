@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad0d615df7c1cc4dafcde3a8a89cff0, type: 3}
-  m_Name: PlayerSO
+  m_Script: {fileID: 11500000, guid: ecb23e8f90b7f1d4ea5ddd1cdceab6d4, type: 3}
+  m_Name: TomotheScoutQuest1SOQuestObjectiveListSO
   m_EditorClassIdentifier: 
-  ID: 0
-  Name: Ashie
-  ReputationAmount: 0
-  Inventory: {fileID: 11400000, guid: 19f57045b39855c4fb2eb7fd43f74252, type: 2}
+  IngredientStackSOList:
+  - IngredientSO: {fileID: 11400000, guid: dd82a91ff1faa9d4daaf42e4bf2c6d23, type: 2}
+    Amount: 2

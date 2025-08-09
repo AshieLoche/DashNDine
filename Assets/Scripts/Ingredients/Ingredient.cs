@@ -27,7 +27,7 @@ namespace DashNDine.IngredientSystem
 
             _ingredientParent = ingredientParent;
             ingredientParent.SetIngredient(this);
-            transform.parent = ingredientParent.GetTransform();
+            transform.parent = ingredientParent.transform;
             transform.localPosition = Vector3.zero;
         }
 
@@ -43,7 +43,7 @@ namespace DashNDine.IngredientSystem
 
         public static Ingredient SpawnIngredient(IngredientSO ingredientSO, IngredientParent ingredientParent)
         {
-            Transform ingredientTransform = Instantiate(ingredientSO.PrefabTransform, ingredientParent.GetTransform());
+            Transform ingredientTransform = Instantiate(ingredientSO.PrefabTransform, ingredientParent.transform);
 
             if (ingredientTransform.TryGetComponent(out Ingredient ingredient))
             {

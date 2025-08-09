@@ -1,4 +1,3 @@
-using System;
 using DashNDine.EnumSystem;
 using TMPro;
 using UnityEngine;
@@ -43,9 +42,9 @@ namespace DashNDine.UISystem
                 -= ChoicesUI_OnResetAction;
         }
 
-        private void ChoicesUI_OnUpdateAction(bool obj)
+        private void ChoicesUI_OnUpdateAction(bool isComplete)
         {
-            _isComplete = true;
+            _isComplete = isComplete;
             SelectButton(_completeActionType);
         }
 

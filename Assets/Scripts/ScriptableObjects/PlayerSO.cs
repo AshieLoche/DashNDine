@@ -6,5 +6,6 @@ namespace DashNDine.ScriptableObjectSystem
     public class PlayerSO : BaseSO
     {
         public int ReputationAmount;
+        public IngredientStackListSO Inventory;
     }
 }

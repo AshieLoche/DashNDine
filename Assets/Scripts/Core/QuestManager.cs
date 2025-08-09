@@ -7,8 +7,9 @@ namespace DashNDine.CoreSystem
 {
     public class QuestManager : SingletonBehaviour<QuestManager>
     {
-        public Action OnCollectIngredientAction;
+        public Action<IngredientStackListSO> OnCollectIngredientAction;
 
+        [SerializeField] private IngredientStackListSO _inventorySO;
         private QuestListSO _questListSO;
 
         protected override void Awake()
@@ -18,18 +19,20 @@ namespace DashNDine.CoreSystem
             _questListSO = ScriptableObject.CreateInstance<QuestListSO>();
         }
 
-        private void Start()
-        {
-            
-        }
-
         public void AddQuest(QuestSO questSO)
             => _questListSO.AddQuestSO(questSO);
 
         public void CollectIngredient(IngredientSO ingredientSO)
         {
-            _questListSO.CollectIngredient(ingredientSO);
-            OnCollectIngredientAction?.Invoke();
+            _inventorySO.CollectIngredient(ingredientSO);
+            OnCollectIngredientAction?.Invoke(_inventorySO);
+        }
+
+        public void CompleteQuest(QuestSO questSO)
+        {
+            _questListSO.RemoveQuestSO(questSO);
+            // _inventorySO.UseIngredients();
+            questSO.Complete();
         }
     }
 }

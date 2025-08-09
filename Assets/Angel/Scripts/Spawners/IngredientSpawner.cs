@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IngredientSpawner : MonoBehaviour
+public class IngredientSpawner1 : MonoBehaviour
 {
     [Header("World Locations")]
     [SerializeField] List<Vector2> region1SpawnSpots;

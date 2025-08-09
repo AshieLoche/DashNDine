@@ -48,10 +48,11 @@ namespace DashNDine.NPCSystem
         {
             foreach (QuestSO personalQuestSO in _personalQuestSOList.SOList)
             {
-                personalQuestSO.QuestStatus =
+                personalQuestSO.SetStatus(
                     (personalQuestSO.ReputationRequired == reputationAMount) ?
                     QuestStatus.Unlocked :
-                    QuestStatus.Locked;
+                    QuestStatus.Locked
+                );
             }
         }
     }

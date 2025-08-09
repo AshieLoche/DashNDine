@@ -1,15 +1,17 @@
+using System;
 using DashNDine.EnumSystem;
 
 namespace DashNDine.StructSystem
 {
-    public struct MonsterQTE
+    [Serializable]
+    public struct MonsterQTEStruct
     {
         public MonsterDifficulty MonsterDifficulty;
         public int Count;
         public int Range;
         public int Reps;
 
-        public MonsterQTE(MonsterDifficulty monsterDifficulty, int count, int range, int reps)
+        public MonsterQTEStruct(MonsterDifficulty monsterDifficulty, int count, int range, int reps)
         {
             MonsterDifficulty = monsterDifficulty;
             Count = count;

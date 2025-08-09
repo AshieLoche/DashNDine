@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using System.Linq;
 using DashNDine.EnumSystem;
-using DashNDine.StructSystem;
 
 namespace DashNDine.ScriptableObjectSystem
 {
@@ -10,7 +8,7 @@ namespace DashNDine.ScriptableObjectSystem
         public NPCSO NPCSO;
         public RegionSO RegionSO;
         public string Description;
-        public List<QuestObjective> QuestObjectiveList = new List<QuestObjective>();
+        public IngredientStackListSO QuestObjectiveList;
         public QuestType QuestType;
         public int MonsterCount;
         public int ReputationRequired;
@@ -22,27 +20,49 @@ namespace DashNDine.ScriptableObjectSystem
         public string Failure;
         public QuestStatus QuestStatus;
 
-        public void ResetQuestObjectiveList()
-        {
-            for (int i = 0; i < QuestObjectiveList.Count; i++)
-            {
-                QuestObjective questObjective = QuestObjectiveList[i];
-                questObjective.CollectedAmount = 0;
-                QuestObjectiveList[i] = questObjective;
-            }
-        }
+        public IngredientStackListSO GetQuestObjectiveList()
+            => QuestObjectiveList;
+
+        public void ClearObjectiveListAmount()
+            => QuestObjectiveList.ClearObjectiveAmount();
 
         public void CollectIngredient(IngredientSO ingredientSO)
-        {
-            for (int i = 0; i < QuestObjectiveList.Count; i++)
-            {
-                QuestObjective questObjective = QuestObjectiveList[i];
-                questObjective.CollectIngredient(ingredientSO);
-                QuestObjectiveList[i] = questObjective;
-            }
-        }
+            => QuestObjectiveList.CollectIngredient(ingredientSO);
 
-        public bool CompareAmount()
-            => QuestObjectiveList.All(e => e.CompareAmount());
+        public void UseIngredients(IngredientStackListSO ingredientStackListSO)
+            => ingredientStackListSO.UseIngredients(GetQuestObjectiveList());
+
+        public bool CompareNPCSO(NPCSO nPCSO)
+            => NPCSO == nPCSO;
+
+        public bool CheckInventory(IngredientStackListSO inventorySO)
+            => QuestObjectiveList.CheckInventory(inventorySO);
+
+        public void Lock()
+            => SetStatus(QuestStatus.Locked);
+
+        public bool IsLocked()
+            => QuestStatus == QuestStatus.Locked;
+
+        public void Unlock()
+            => SetStatus(QuestStatus.Unlocked);
+
+        public void Wait()
+            => SetStatus(QuestStatus.Waiting);
+
+        public void Complete()
+            => SetStatus(QuestStatus.Success);
+
+        public void Fail()
+            => SetStatus(QuestStatus.Failure);
+
+        public void SetStatus(QuestStatus questStatus)
+            => QuestStatus = questStatus;
+
+        public QuestStatus GetStatus()
+            => QuestStatus;
+
+        public NPCSO GetNPCSO()
+            => NPCSO;
     }
 }
