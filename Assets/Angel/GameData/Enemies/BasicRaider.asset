@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BasicRaider
   m_EditorClassIdentifier: 
   type: Raider
-  maxHp: 5
+  maxHp: 3
   image: {fileID: -3498803549094787003, guid: d2662e26a366a3a49ab24c9f3c839cd5, type: 3}
   baseSpeed: 1
-  baseDmg: 1
+  baseDmg: 2
   difficulty: 0
   controller: {fileID: 9100000, guid: 38fdc7d43dcf0304ba107853b1c8e099, type: 2}
   notes: none

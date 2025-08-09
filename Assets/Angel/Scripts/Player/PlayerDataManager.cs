@@ -5,17 +5,23 @@ public class PlayerDataManager : MonoBehaviour
 {
     [Header("Player Data")]
     [SerializeField] private PlayerData playerData;
+    [SerializeField] GameObject player;
     private int playerHp;
     public int PlayerHp => playerHp;
     private int playerReputation;
     public int PlayerReputation => playerReputation;
     private int killedEnemies;
     public int KilledEnemies => killedEnemies;
+    [SerializeField] AudioManager audioManager;
 
     [Header("Arena Data")]
     [SerializeField] ArenaData arenaData;
     [SerializeField] float ambushCDTime;
     private Vector2 posBeforeArena;
+
+    [Header("Player Death")]
+    [SerializeField] GameObject deathPanel;
+
     private void Start()
     {
         playerData.killedEnemies = 0;
@@ -23,6 +29,7 @@ public class PlayerDataManager : MonoBehaviour
         ambushCDTime = Random.Range(playerData.minAmbushCDTime, playerData.maxAmbushCDTime);
         playerData.ambushTimer = 0;
         playerData.inArena = false;
+        playerData.currentHP = playerData.maxHP;
     }
     private void Update()
     {
@@ -48,18 +55,20 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerData.killedEnemies++;
     }
-    public void DamagePlayer()
+    public void DamagePlayer(int dmg)
     {
-        playerData.currentHP = Mathf.Clamp(playerData.currentHP- 1, 0, playerData.maxHP);
+        playerData.currentHP = Mathf.Clamp(playerData.currentHP- dmg, 0, playerData.maxHP);
     }
     public void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        audioManager.playDeath();
+        deathPanel.SetActive(true);
         //SceneManager.LoadScene("Game Over");
     }
     public void ResetAmbushTimer()
     {
-        transform.position = posBeforeArena;
+        audioManager.playNorm();
+        player.transform.position = posBeforeArena;
         playerData.inArena = false;
         playerData.killedEnemies = 0;
         playerData.ambushTimer = 0;
@@ -71,10 +80,11 @@ public class PlayerDataManager : MonoBehaviour
             playerData.ambushTimer = Mathf.Clamp(playerData.ambushTimer + Time.deltaTime, 0, ambushCDTime);
             if(playerData.ambushTimer == ambushCDTime)
             {
-                posBeforeArena = transform.position;
+                posBeforeArena = player.transform.position;
                 playerData.inArena = true;
+                audioManager.playAmbush();
                 SceneManager.LoadScene("DefenseArena", LoadSceneMode.Additive);
-                transform.position = new Vector2(-18, -38);
+                player.transform.position = new Vector2(-18, -38);
             }
         }
     }

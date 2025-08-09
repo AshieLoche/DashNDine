@@ -7,6 +7,7 @@ public class EnemyAction : MonoBehaviour
 {
     private int requiredKeyCount;
     private int keyPressedCount = 0;
+    private int PlayerDmg;
     private bool isActive = false, isQTESuccessful = false;
     public bool IsQTESuccessful => isQTESuccessful;
 
@@ -57,7 +58,7 @@ public class EnemyAction : MonoBehaviour
         isActive = true;
         return sequence;
     }
-    List<int> RandomizeQTEkey(int keyCount, int highestInput, List<int> seq)
+    private List<int> RandomizeQTEkey(int keyCount, int highestInput, List<int> seq)
     {
         requiredKeyCount = keyCount;
         for (int i = 0; i < keyCount; i++)
@@ -65,6 +66,10 @@ public class EnemyAction : MonoBehaviour
             seq.Add(Random.Range(1, highestInput));
         }
         return seq;
+    }
+    public void SetDmg(int dmg)
+    {
+        PlayerDmg = dmg;
     }
     public void LookAtPlayer(bool isLookingRight)
     {
@@ -86,7 +91,7 @@ public class EnemyAction : MonoBehaviour
         else if (collision.gameObject != null && collision.gameObject.tag == "Player")
         {
             Debug.Log("Hit Player");
-            collision.gameObject.GetComponent<PlayerDataManager>().DamagePlayer();
+            collision.gameObject.GetComponent<PlayerDataManager>().DamagePlayer(PlayerDmg);
         }
     }
 }

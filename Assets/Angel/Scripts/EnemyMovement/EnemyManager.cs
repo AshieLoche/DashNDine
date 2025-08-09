@@ -114,6 +114,7 @@ public class EnemyManager : MonoBehaviour
         speed = enemyData.baseSpeed;
         enemyAnim = GetComponent<Animator>();
         enemyAnim.runtimeAnimatorController = enemyData.controller;
+        enemyAction.SetDmg(enemyData.baseDmg);
 
         GetComponent<SpriteRenderer>().sprite = enemyData.image;
 

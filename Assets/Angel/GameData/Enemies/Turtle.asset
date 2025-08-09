@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Turtle
   m_EditorClassIdentifier: 
   type: Raider
-  maxHp: 10
+  maxHp: 6
   image: {fileID: -3498803549094787003, guid: d2662e26a366a3a49ab24c9f3c839cd5, type: 3}
   baseSpeed: 2
-  baseDmg: 2
+  baseDmg: 5
   difficulty: 0
   controller: {fileID: 9100000, guid: b1dbd71e5a46f974eb254c01af29a603, type: 2}
   notes: none

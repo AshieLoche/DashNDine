@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -16,6 +17,9 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] private GameObject skill1, skill2, skill3;
     [SerializeField] float skillCD, skill1Timer, skill2Timer, skill3Timer;
     [SerializeField] List<int> skill1QTE, skill2QTE, skill3QTE;
+
+    [SerializeField] AudioSource audioSrc;
+    [SerializeField] List<AudioClip> clipList;
 
     private string sequenceTxt;
     private List<string> seqHolder, selectedSeq;
@@ -216,7 +220,8 @@ public class PlayerCombatController : MonoBehaviour
     }
     void CheckQTEInput(int inputtedKey)
     {
-
+        audioSrc.clip = clipList[inputtedKey- 1];
+        audioSrc.Play();
         if (inputtedKey.ToString() == selectedSeq[keyPressCount])
         {
             keyPressCount++;

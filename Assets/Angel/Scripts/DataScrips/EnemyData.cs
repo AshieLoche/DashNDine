@@ -11,7 +11,7 @@ public class EnemyData : ScriptableObject
     public int maxHp;
     public Sprite image;
     public float baseSpeed;
-    public float baseDmg;
+    public int baseDmg;
     public Difficulty difficulty;
     public RuntimeAnimatorController controller;
     public string notes;
