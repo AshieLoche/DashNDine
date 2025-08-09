@@ -8,6 +8,7 @@ public class MainMenuUIManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject startPromptPanel;
 
     [Header("Buttons")]
     [SerializeField] private Button PlayBtn;
@@ -33,6 +34,7 @@ public class MainMenuUIManager : MonoBehaviour
         if (InputSystem.actions.FindAction("Submit").WasPerformedThisFrame())
         {
             mainMenuPanel.SetActive(true);
+            startPromptPanel.SetActive(false);
         }
     }
 

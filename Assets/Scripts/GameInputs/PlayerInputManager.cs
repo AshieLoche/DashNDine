@@ -11,7 +11,7 @@ namespace DashNDine.GameInputSystem
     {
         public Action OnDialoguePerformedAction;
         public Action OnInteractPerformedAction;
-        public Action<Vector2> OnMovePerformedAction;
+        public Action<Vector2> OnMoveAction;
         public Action<QuickTimeEventButton> OnQuickTimeEventPerformedAction;
         public Action OnSkillPerformedAction;
         public Action<SkillSelectButton> OnSkillSelectPerformedAction;
@@ -57,10 +57,7 @@ namespace DashNDine.GameInputSystem
         }
 
         public void OnMove(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-                OnMovePerformedAction?.Invoke(context.ReadValue<Vector2>());
-        }
+            =>  OnMoveAction?.Invoke(context.ReadValue<Vector2>());
 
         public void OnQuickTimeEvent(InputAction.CallbackContext context)
         {
@@ -100,14 +97,15 @@ namespace DashNDine.GameInputSystem
             }
         }
 
-        private void InvokeActionFromKey<T>(KeyControl keyControl, Func<string, string> stringModifierFunc, Action<T> action) where T : struct, Enum
+        private void InvokeActionFromKey<Tenum>(KeyControl keyControl, Func<string, string> stringModifierFunc, Action<Tenum> action) where Tenum : struct, Enum
         {
             string keyControlDisplayName = keyControl.displayName;
             string enumValueName = stringModifierFunc?.Invoke(keyControlDisplayName);
 
-            T enumValue = Utils.ConvertStringToEnum<T, PlayerInput>(enumValueName, gameObject);
-
-            action?.Invoke(enumValue);
+            if (Utils.TryConvertStringToEnum(enumValueName, out Tenum newEnum))
+                action?.Invoke(newEnum);
+            else
+                Debug.LogError($"String to {typeof(Tenum).Name} parsing failed in {typeof(PlayerInput).Name} at {name}");
         }
     }
 }

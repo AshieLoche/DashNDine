@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientID: 6
   ingredientName: Onion
-  ingredientImage: {fileID: 0}
+  ingredientImage: {fileID: -3215097514316715492, guid: fb8551f0e6734bb49bde100f8ef7f72a, type: 3}
   isSpecial: 0
   region: 0
   location: 0
-  spawnPoints: []
   AdditionalEffect: none

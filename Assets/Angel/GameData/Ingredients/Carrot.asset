@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientID: 5
   ingredientName: Carrot
-  ingredientImage: {fileID: 0}
+  ingredientImage: {fileID: -5859083586626064994, guid: e32333c35513cbf4f9339e00473cfd89, type: 3}
   isSpecial: 0
   region: 0
   location: 0
-  spawnPoints: []
   AdditionalEffect: none
