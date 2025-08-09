@@ -78,7 +78,7 @@ public class PlayerCombatController : MonoBehaviour
         {
             sequenceTxt = "";
             isUsingSkill = true;
-            Time.timeScale = 0.5f;
+            Time.timeScale = 0.1f;
             skillPanel.SetActive(true);
         }
         else return;

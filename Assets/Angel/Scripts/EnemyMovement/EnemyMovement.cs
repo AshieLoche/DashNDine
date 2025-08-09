@@ -16,7 +16,6 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
     public bool StartMoving(Vector3 target, float spd)
     {

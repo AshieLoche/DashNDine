@@ -259,6 +259,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: d2662e26a366a3a49ab24c9f3c839cd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8753804378964020515, guid: f919db59b57fd4140903fdb99cffcecb, type: 3}
+    - target: {fileID: 3626916397498700004, guid: d2662e26a366a3a49ab24c9f3c839cd5, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
@@ -413,17 +417,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.29796553, y: 2.5299997}
+  m_Offset: {x: -0.03444147, y: 0.094126105}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5149425, y: -0.014227643}
-    oldSize: {x: 4.35, y: 4.92}
+    pivot: {x: 0.49351978, y: 0.4585087}
+    oldSize: {x: 2.97, y: 2.01}
     newSize: {x: 4.35, y: 4.92}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.4604993, y: 4.92}
+  m_Size: {x: 2.7783008, y: 1.9276073}
   m_EdgeRadius: 0
 --- !u!50 &7819228434192392867
 Rigidbody2D:

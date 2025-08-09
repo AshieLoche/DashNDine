@@ -37,6 +37,7 @@ public class EnemyManager : MonoBehaviour
     private EnemyMovement enemyMovement;
     private EnemyAction enemyAction;
     private EnemyUI enemyUI;
+    private Animator animator;
 
     private void Awake()
     {
@@ -48,6 +49,8 @@ public class EnemyManager : MonoBehaviour
         {
             Debug.LogWarning($"{name}: No QTE Text assigned or found in scene!");
         }
+        animator = GetComponent<Animator>();
+
     }
 
     private void Start()
@@ -83,7 +86,7 @@ public class EnemyManager : MonoBehaviour
                 isMoving = true;
                 isLookingRight = enemyMovement.StartMoving(startingPosition, speed);
             }
-
+            animator.SetBool("isWalking", isMoving);
             if (isDead)
             {
                 deadTimer += Time.deltaTime;

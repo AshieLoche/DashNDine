@@ -83,14 +83,14 @@ public class PlayerDataManager : MonoBehaviour
         playerData.inArena = false;
         arenaData.enemyType = enemyType.Ambush;
         audioManager.playNorm();
-        SceneManager.LoadScene("DefenseArena", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync("DefenseArena");
     }
     public void FailedCooking()
     {
         playerData.inArena = false;
         arenaData.enemyType = enemyType.Ambush;
         audioManager.playNorm();
-        SceneManager.LoadScene("DefenseArena", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync("DefenseArena");
     }
     public void DamagePlayer(int dmg)
     {
@@ -119,10 +119,10 @@ public class PlayerDataManager : MonoBehaviour
             if(playerData.ambushTimer == ambushCDTime)
             {
                 posBeforeArena = player.transform.position;
-                playerData.inArena = true;
                 audioManager.playAmbush();
                 SceneManager.LoadScene("DefenseArena", LoadSceneMode.Additive);
                 player.transform.position = new Vector2(-18, -38);
+                playerData.inArena = true;
             }
         }
     }
