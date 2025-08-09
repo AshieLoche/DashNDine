@@ -50,6 +50,14 @@ public class PlayerDataManager : MonoBehaviour
             triggerDefense = false;
             CookFood();
         }
+        if (playerData.Reputation > 100)
+        {
+            arenaData.difficulty = Difficulty.Normal;
+        }
+        else if (playerData.Reputation > 300)
+        {
+            arenaData.difficulty = Difficulty.Hard;
+        }
     }
     public void ChangeHP(int hp)
     {
@@ -59,7 +67,7 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerData.Reputation += reputation;
     }
-    public void EnemyKilled()
+    public async void EnemyKilled()
     {
         playerData.killedEnemies++;
     }
@@ -96,7 +104,7 @@ public class PlayerDataManager : MonoBehaviour
     }
     public void ResetAmbushTimer()
     {
-
+        AddReputation(2);
         audioManager.playNorm();
         player.transform.position = posBeforeArena;
         playerData.inArena = false;

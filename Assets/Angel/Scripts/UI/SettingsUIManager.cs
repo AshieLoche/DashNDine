@@ -69,7 +69,7 @@ public class SettingsUIManager : MonoBehaviour
         backGround.SetActive(false);
         settingsPanel.SetActive(false);
     }
-    void MainMenu()
+    public void MainMenu()
     {
         sfxAudioSource.clip = onClickClip;
         sfxAudioSource.Play();

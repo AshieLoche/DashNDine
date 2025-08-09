@@ -14,6 +14,7 @@ public class AmbushManager : MonoBehaviour
 
     [Header("Enemies")]
     [SerializeField] private int remainingEnemies;
+    [SerializeField] private int activeEnemies;
     private EnemySpawner spawner;
     [SerializeField] private float minDelay = 1f;
     [SerializeField] private float maxDelay = 3f;
@@ -55,7 +56,6 @@ public class AmbushManager : MonoBehaviour
             {
                 if(e.activeSelf) e.GetComponent<EnemyManager>().MoveEnemy(player);
             }
-
             remainingEnemies = spawner.EnemyCount - player.GetComponent<PlayerDataManager>().KilledEnemies;
             remainingEnemiesTxt.text = remainingEnemies.ToString();
 
