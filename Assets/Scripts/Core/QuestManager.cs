@@ -16,6 +16,7 @@ namespace DashNDine.CoreSystem
         {
             base.Awake();
 
+            _inventorySO.ClearObjectiveAmount();
             _questListSO = ScriptableObject.CreateInstance<QuestListSO>();
         }
 
@@ -31,7 +32,10 @@ namespace DashNDine.CoreSystem
         public void CompleteQuest(QuestSO questSO)
         {
             _questListSO.RemoveQuestSO(questSO);
-            // _inventorySO.UseIngredients();
+            foreach (IngredientStack ingredientStack in questSO.GetIngredientStackSOList())
+            {
+                _inventorySO.UseIngredients(ingredientStack);
+            }
             questSO.Complete();
         }
     }

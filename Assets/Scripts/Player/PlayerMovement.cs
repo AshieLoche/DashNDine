@@ -42,6 +42,8 @@ namespace DashNDine.PlayerSystem
                 += ChoicesUI_OnAcceptAction;
             _choicesUI.OnGiveAction
                 += ChoicesUI_OnGiveAction;
+            _choicesUI.OnCookAction
+                += ChoicesUI_OnCookAction;
             _choicesUI.OnLeaveAction
                 += ChoicesUI_OnLeaveAction;
         }
@@ -62,10 +64,15 @@ namespace DashNDine.PlayerSystem
                     -= ChoicesUI_OnAcceptAction;
                 _choicesUI.OnGiveAction
                     -= ChoicesUI_OnGiveAction;
+                _choicesUI.OnCookAction
+                    -= ChoicesUI_OnCookAction;
                 _choicesUI.OnLeaveAction
                     -= ChoicesUI_OnLeaveAction;
             }
         }
+
+        private void ChoicesUI_OnCookAction()
+            => SetCanMove(true);
 
         private void ChoicesUI_OnGiveAction()
             => SetCanMove(true);

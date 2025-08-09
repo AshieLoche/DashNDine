@@ -3,12 +3,12 @@ using System;
 namespace DashNDine.ScriptableObjectSystem
 {
     [Serializable]
-    public class IngredientStackSO
+    public class IngredientStack
     {
         public IngredientSO IngredientSO;
         public int Amount;
 
-        public IngredientStackSO(IngredientSO ingredientSO, int amount)
+        public IngredientStack(IngredientSO ingredientSO, int amount)
         {
             IngredientSO = ingredientSO;
             Amount = amount;
@@ -28,9 +28,15 @@ namespace DashNDine.ScriptableObjectSystem
 
         public bool CheckInventory(IngredientStackListSO inventorySO)
         {
-            IngredientStackSO ingredientStackSO = inventorySO.GetIngredientStackSOByIngredientSO(IngredientSO);
+            IngredientStack ingredientStackSO = inventorySO.GetIngredientStackSOByIngredientSO(IngredientSO);
 
-            return Amount == ingredientStackSO.Amount;
+            return ingredientStackSO.Amount >= Amount;
         }
+
+        public void UseIngredient(IngredientStack questObjective)
+        {
+            if (CompareIngredientSO(questObjective.IngredientSO))
+                Amount -= questObjective.Amount;
+        } 
     }
 }

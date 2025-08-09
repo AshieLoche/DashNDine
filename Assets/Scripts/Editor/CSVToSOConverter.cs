@@ -438,7 +438,7 @@ namespace DashNDine.EditorSystem
 
                     if (int.TryParse(qoSeparated[1], out int requiredAmount))
                     {
-                        IngredientStackSO questObjective = new IngredientStackSO(ingredientSO, requiredAmount);
+                        IngredientStack questObjective = new IngredientStack(ingredientSO, requiredAmount);
                         questObjectiveList.Add(questObjective);
                     }
                     else
@@ -521,7 +521,7 @@ namespace DashNDine.EditorSystem
 
             foreach (IngredientSO ingredientSO in ingredientListSO.SOList)
             {
-                IngredientStackSO ingredientStackSO = new IngredientStackSO(ingredientSO, 0);
+                IngredientStack ingredientStackSO = new IngredientStack(ingredientSO, 0);
                 inventorySO.Add(ingredientStackSO);
             }
 

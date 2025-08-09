@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using DashNDine.EnumSystem;
 
@@ -20,6 +21,9 @@ namespace DashNDine.ScriptableObjectSystem
         public string Failure;
         public QuestStatus QuestStatus;
 
+        public List<IngredientStack> GetIngredientStackSOList()
+            => QuestObjectiveList.IngredientStackSOList;
+
         public IngredientStackListSO GetQuestObjectiveList()
             => QuestObjectiveList;
 
@@ -28,9 +32,6 @@ namespace DashNDine.ScriptableObjectSystem
 
         public void CollectIngredient(IngredientSO ingredientSO)
             => QuestObjectiveList.CollectIngredient(ingredientSO);
-
-        public void UseIngredients(IngredientStackListSO ingredientStackListSO)
-            => ingredientStackListSO.UseIngredients(GetQuestObjectiveList());
 
         public bool CompareNPCSO(NPCSO nPCSO)
             => NPCSO == nPCSO;

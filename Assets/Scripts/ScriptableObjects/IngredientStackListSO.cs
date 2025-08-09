@@ -6,7 +6,7 @@ namespace DashNDine.ScriptableObjectSystem
 {
     public class IngredientStackListSO : ScriptableObject
     {
-        public List<IngredientStackSO> IngredientStackSOList = new List<IngredientStackSO>();
+        public List<IngredientStack> IngredientStackSOList = new List<IngredientStack>();
 
         public void Clear()
             => IngredientStackSOList.Clear();
@@ -14,13 +14,13 @@ namespace DashNDine.ScriptableObjectSystem
         public List<IngredientSO> GetIngredientSOList()
             => IngredientStackSOList.Select(e => e.IngredientSO).ToList();
 
-        public void Add(IngredientStackSO ingredientStackSO)
-            => IngredientStackSOList.Add(ingredientStackSO);
+        public void Add(IngredientStack ingredientStack)
+            => IngredientStackSOList.Add(ingredientStack);
 
         public int Count
             => IngredientStackSOList.Count;
 
-        public IngredientStackSO this[int index]
+        public IngredientStack this[int index]
         {
             get { return IngredientStackSOList[index]; }
             set { IngredientStackSOList[index] = value; }
@@ -28,35 +28,35 @@ namespace DashNDine.ScriptableObjectSystem
 
         public void ClearObjectiveAmount()
         {
-            foreach (IngredientStackSO ingredientStackSO in IngredientStackSOList)
+            foreach (IngredientStack ingredientStack in IngredientStackSOList)
             {
-                ingredientStackSO.ClearAmount();
+                ingredientStack.ClearAmount();
             }
         }
 
-        public int GetIndex(IngredientStackSO ingredientStackSO)
-            => IngredientStackSOList.FindIndex(e => e == ingredientStackSO);
+        public int GetIndex(IngredientStack ingredientStack)
+            => IngredientStackSOList.FindIndex(e => e == ingredientStack);
 
         public void CollectIngredient(IngredientSO ingredientSO)
         {
-            foreach (IngredientStackSO ingredientStackSO in IngredientStackSOList)
+            foreach (IngredientStack ingredientStack in IngredientStackSOList)
             {
-                ingredientStackSO.CollectIngredient(ingredientSO);
+                ingredientStack.CollectIngredient(ingredientSO);
             }
         }
 
         public bool CheckInventory(IngredientStackListSO inventorySO)
             => IngredientStackSOList.All(e => e.CheckInventory(inventorySO));
 
-        public IngredientStackSO GetIngredientStackSOByIngredientSO(IngredientSO ingredientSO)
+        public IngredientStack GetIngredientStackSOByIngredientSO(IngredientSO ingredientSO)
             => IngredientStackSOList.Find(e => e.CompareIngredientSO(ingredientSO));
 
-        public void UseIngredients(IngredientStackListSO ingredientStackListSO)
+        public void UseIngredients(IngredientStack questObjective)
         {
-            // foreach (IngredientStackSO ingredientStackSO in ingredientStackListSO)
-            // {
-
-            // }
+            foreach (IngredientStack ingredientStackSO in IngredientStackSOList)
+            {
+                ingredientStackSO.UseIngredient(questObjective);
+            }
         }
     }
 }

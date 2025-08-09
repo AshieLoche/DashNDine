@@ -109,6 +109,9 @@ namespace DashNDine.UISystem
         }
 
         public void OnCook()
-            => OnCookAction?.Invoke();
+        {
+            // TODO: CALL COOK GAME
+            OnCookAction?.Invoke();
+        }
     }
 }

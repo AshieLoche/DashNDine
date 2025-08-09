@@ -20,6 +20,8 @@ namespace DashNDine.NPCSystem
                 += ChoicesUI_OnAcceptAction;
             _choicesUI.OnGiveAction
                 += ChoicesUI_OnGiveAction;
+            _choicesUI.OnCookAction
+                += ChoicesUI_OnCookAction;
             _choicesUI.OnLeaveAction
                 += ChoicesUI_OnLeaveAction;
         }
@@ -33,9 +35,14 @@ namespace DashNDine.NPCSystem
                 -= ChoicesUI_OnAcceptAction;
             _choicesUI.OnGiveAction
                 -= ChoicesUI_OnGiveAction;
+            _choicesUI.OnCookAction
+                -= ChoicesUI_OnCookAction;
             _choicesUI.OnLeaveAction
                 -= ChoicesUI_OnLeaveAction;
         }
+
+        private void ChoicesUI_OnCookAction()
+            => SetIsInteracted(false);
 
         private void ChoicesUI_OnGiveAction()
             => SetIsInteracted(false);
