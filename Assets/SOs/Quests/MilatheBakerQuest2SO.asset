@@ -17,13 +17,7 @@ MonoBehaviour:
   NPCSO: {fileID: 11400000, guid: 92ae33ab213e189468614bf390631868, type: 2}
   RegionSO: {fileID: 11400000, guid: f3d3293cb3a2961498352739fc4c56d4, type: 2}
   Description: Bake carrot cake and deliver.
-  QuestObjectiveList:
-  - IngredientSO: {fileID: 11400000, guid: a9a502eeb0dddfd4a81d2236cf7a349b, type: 2}
-    RequiredAmount: 2
-    CollectedAmount: 0
-  - IngredientSO: {fileID: 11400000, guid: d31fe1f8d0f445f4e8e09076a2f9b8be, type: 2}
-    RequiredAmount: 1
-    CollectedAmount: 0
+  QuestObjectiveList: {fileID: 11400000, guid: 9d381dd02289ac3478084313d1479926, type: 2}
   QuestType: 1
   MonsterCount: 20
   ReputationRequired: 75

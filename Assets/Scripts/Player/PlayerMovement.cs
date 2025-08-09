@@ -1,6 +1,5 @@
 using System;
 using DashNDine.CoreSystem;
-using DashNDine.ScriptableObjectSystem;
 using DashNDine.UISystem;
 using UnityEngine;
 
@@ -41,6 +40,8 @@ namespace DashNDine.PlayerSystem
 
             _choicesUI.OnAcceptAction
                 += ChoicesUI_OnAcceptAction;
+            _choicesUI.OnGiveAction
+                += ChoicesUI_OnGiveAction;
             _choicesUI.OnLeaveAction
                 += ChoicesUI_OnLeaveAction;
         }
@@ -59,12 +60,17 @@ namespace DashNDine.PlayerSystem
             {
                 _choicesUI.OnAcceptAction
                     -= ChoicesUI_OnAcceptAction;
+                _choicesUI.OnGiveAction
+                    -= ChoicesUI_OnGiveAction;
                 _choicesUI.OnLeaveAction
                     -= ChoicesUI_OnLeaveAction;
             }
         }
 
-        private void ChoicesUI_OnAcceptAction(QuestSO sO)
+        private void ChoicesUI_OnGiveAction()
+            => SetCanMove(true);
+
+        private void ChoicesUI_OnAcceptAction()
             => SetCanMove(true);
 
         private void ChoicesUI_OnLeaveAction()

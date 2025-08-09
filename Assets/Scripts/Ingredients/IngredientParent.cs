@@ -5,10 +5,7 @@ namespace DashNDine.IngredientSystem
     public class IngredientParent : MonoBehaviour
     {
         private Ingredient _ingredient;
-
-        public Transform GetTransform()
-            => transform;
-
+        
         public void SetIngredient(Ingredient ingredient)
             => _ingredient = ingredient;
 

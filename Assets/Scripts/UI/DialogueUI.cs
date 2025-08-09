@@ -1,4 +1,3 @@
-using System;
 using DashNDine.EnumSystem;
 using DashNDine.GameInputSystem;
 using DashNDine.MiscSystem;
@@ -33,6 +32,8 @@ namespace DashNDine.UISystem
             
             _choicesUI.OnAcceptAction
                 += ChoicesUI_OnAcceptAction;
+            _choicesUI.OnGiveAction
+                += ChoicesUI_OnGiveAction;
             _choicesUI.OnLeaveAction
                 += ChoicesUI_OnLeaveAction;
 
@@ -57,12 +58,17 @@ namespace DashNDine.UISystem
             {
                 _choicesUI.OnAcceptAction
                     -= ChoicesUI_OnAcceptAction;
+                _choicesUI.OnGiveAction
+                    -= ChoicesUI_OnGiveAction;
                 _choicesUI.OnLeaveAction
                     -= ChoicesUI_OnLeaveAction;
             }
         }
 
-        private void ChoicesUI_OnAcceptAction(QuestSO questSO)
+        private void ChoicesUI_OnGiveAction()
+            => ResetDialogue();
+
+        private void ChoicesUI_OnAcceptAction()
             => ResetDialogue();
 
         private void ChoicesUI_OnLeaveAction()
@@ -75,7 +81,7 @@ namespace DashNDine.UISystem
         {
             ResetDialogue();
             _questSO = questSO;
-            NPCSO npcSO = questSO.NPCSO;
+            NPCSO npcSO = questSO.GetNPCSO();
             _speakerImage.sprite = npcSO.spriteHead;
             _speakerName.text = npcSO.Name;
             StartTyping(questSO);
@@ -90,7 +96,7 @@ namespace DashNDine.UISystem
 
         private void StartTyping(QuestSO questSO)
         {
-            _dialogue = questSO.QuestStatus switch
+            _dialogue = questSO.GetStatus() switch
             {
                 QuestStatus.Unlocked => questSO.Prompt,
                 QuestStatus.Waiting => questSO.Waiting,
