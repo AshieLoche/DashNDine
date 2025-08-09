@@ -72,7 +72,7 @@ public class MainMenuUIManager : MonoBehaviour
     {
         sfxAudioSource.clip = playBtnAudioClip;
         sfxAudioSource.Play();
-        SceneManager.LoadScene("Game Scene");
+        SceneManager.LoadScene("Game");
     }
     void Settings()
     {
