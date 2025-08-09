@@ -1,38 +1,48 @@
-using System;
+using DashNDine.CoreSystem;
 using UnityEngine;
 
 namespace DashNDine.NPCSystem
 {
     public class InteractPromptUI : MonoBehaviour
     {
-        [SerializeField] private NPCInteraction _npcInteraction;
+        [SerializeField] private BaseInteraction _baseInteraction;
 
         private void Awake()
         {
-            _npcInteraction.OnPlayerEnterAction
-                += TownNPCInteraction_OnPlayerEnterAction;
-            _npcInteraction.OnPlayerExitAction
-                += TownNPCInteraction_OnPlayerExitAction;
+            _baseInteraction.OnLookAtAction
+                += BaseInteraction_OnLookAtAction;
+            _baseInteraction.OnLookAwayAction
+                += BaseInteraction_OnLookAwayAction;
+            _baseInteraction.OnInteractAction
+                += BaseInteraction_OnInteractAction;
 
             SetVisibility(false);
         }
 
         private void OnDestroy()
         {
-            if (_npcInteraction == null)
+            if (_baseInteraction == null)
                 return;
                 
-            _npcInteraction.OnPlayerEnterAction
-                -= TownNPCInteraction_OnPlayerEnterAction;
-            _npcInteraction.OnPlayerExitAction
-                -= TownNPCInteraction_OnPlayerExitAction;
+            _baseInteraction.OnLookAtAction
+                -= BaseInteraction_OnLookAtAction;
+            _baseInteraction.OnLookAwayAction
+                -= BaseInteraction_OnLookAwayAction;
+            _baseInteraction.OnInteractAction
+                -= BaseInteraction_OnInteractAction;
         }
 
-        private void TownNPCInteraction_OnPlayerEnterAction()
-            => SetVisibility(true);
-        
-        private void TownNPCInteraction_OnPlayerExitAction()
+        private void BaseInteraction_OnInteractAction()
             => SetVisibility(false);
+
+        private void BaseInteraction_OnLookAtAction()
+            => OnPlayerDetection(true);
+
+        private void BaseInteraction_OnLookAwayAction()
+            => OnPlayerDetection(false);
+
+        private void OnPlayerDetection(bool isDetected)
+            => SetVisibility(isDetected);
 
         private void SetVisibility(bool isVisible)
             => gameObject.SetActive(isVisible);

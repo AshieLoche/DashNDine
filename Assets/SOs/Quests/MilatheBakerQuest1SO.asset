@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f94c6cf65925043b224b84645e5802, type: 3}
+  m_Name: MilatheBakerQuest1SO
+  m_EditorClassIdentifier: 
+  ID: 1
+  Name: Mila the Baker - Quest 1
+  NPCSO: {fileID: 11400000, guid: 92ae33ab213e189468614bf390631868, type: 2}
+  RegionSO: {fileID: 11400000, guid: f3d3293cb3a2961498352739fc4c56d4, type: 2}
+  Description: Gather 3 wheat and 1 honey.
+  QuestObjectiveList:
+  - IngredientSO: {fileID: 11400000, guid: ad3e11c36ff0a45428fd3a05371ab0c6, type: 2}
+    RequiredAmount: 3
+    CollectedAmount: 0
+  - IngredientSO: {fileID: 11400000, guid: 91670cc6ae9be6d40a13f00cbf44ac69, type: 2}
+    RequiredAmount: 1
+    CollectedAmount: 0
+  QuestType: 0
+  MonsterCount: 0
+  ReputationRequired: 0
+  Reward: 50
+  BonusReward: 0
+  Prompt: "\u201CFresh wheat, sweet honey\u2026 maybe we can taste normal life again.\u201D"
+  Waiting: "\u201CStill waiting on that wheat and honey, dear.\u201D"
+  Success: "\u201CPerfect! This will keep the ovens warm for another day.\u201D"
+  Failure: "\u201CAh, no ingredients? The oven will have to stay cold.\u201D"
+  QuestStatus: 0

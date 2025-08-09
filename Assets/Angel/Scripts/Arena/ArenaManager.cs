@@ -2,17 +2,10 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptables/Arena Information")]
-public class ArenaInformation : ScriptableObject
-{
-    public enemyType enemyType;
-    public Difficulty difficulty;
-}
-
 public class ArenaManager : MonoBehaviour
 {
     [Header("Prerequisites")]
-    [SerializeField] private ArenaInformation arenaData;
+    [SerializeField] private ArenaData arenaData;
     private AmbushManager ambushManager;
     private PotDefenseManager potDefenseManager;
 
@@ -24,7 +17,7 @@ public class ArenaManager : MonoBehaviour
     [Header("Scene UI")]
     [SerializeField] private GameObject uiPanel;
     [SerializeField] private GameObject ambushPanel, defensePanel;   
-    [SerializeField] private TextMeshProUGUI countdownTxt;
+    [SerializeField] private TextMeshProUGUI countdownTxt, eventTitle, eventPrompt;
 
     private void Awake()
     {
@@ -34,6 +27,17 @@ public class ArenaManager : MonoBehaviour
     private void Start()
     {
         countDownTime = startTime;
+        switch (arenaData.enemyType)
+        {
+            case enemyType.Ambush:
+                eventTitle.text = "Ambushed!";
+                eventPrompt.text = "Defeat your enemies to survive!";
+                break;
+            case enemyType.Defense:
+                eventTitle.text = "Pot Defense";
+                eventPrompt.text = "Defend the pot while its cookin'!";
+                break;
+        }
     }
     private void Update()
     {
@@ -54,10 +58,10 @@ public class ArenaManager : MonoBehaviour
             switch (arenaData.enemyType)
             {
                 case enemyType.Ambush:
-                    ambushManager.StartDefense();
+                    ambushManager.StartDefense(arenaData.difficulty);
                     break;
                 case enemyType.Defense:
-                    potDefenseManager.StartPotDefense();
+                    potDefenseManager.StartPotDefense(arenaData.difficulty);
                     break;
                 default:
                     break;

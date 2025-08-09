@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-public class QuestManager : MonoBehaviour
+public class QuestManager1 : MonoBehaviour
 {
     [Header("Quest Collections")]
     [SerializeField] private List<QuestData> quests = new List<QuestData>();

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79897be553712794799d1ca229828c3c, type: 3}
+  m_Name: MilatheBakerSO
+  m_EditorClassIdentifier: 
+  ID: 1
+  Name: Mila the Baker
+  RegionSO: {fileID: 11400000, guid: f3d3293cb3a2961498352739fc4c56d4, type: 2}
+  spriteHead: {fileID: 1975674434875344660, guid: e13c28a6553a18f409e4d6b45e493c8b, type: 3}
+  sprite: {fileID: 4256183143586760365, guid: 925c706efcac88440b296118b1d8a049, type: 3}
+  PrefabTransform: {fileID: 756246185528704338, guid: 00fa812dc28164540b8a231320d71e78, type: 3}

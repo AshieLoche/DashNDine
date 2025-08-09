@@ -16,19 +16,21 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canMove && Vector3.Distance(transform.position, targetPos) >0.1f)
-        {
-            transform.position += direction * speed * Time.deltaTime;
-            isMoving = true;
-        }
-        else isMoving = false;
+
     }
     public bool StartMoving(Vector3 target, float spd)
     {
         targetPos = target;
         speed = spd;
         direction = (targetPos - transform.position).normalized;
-        canMove = true;
+
+        if (Vector3.Distance(transform.position, targetPos) > 0.1f)
+        {
+            transform.position += direction * speed * Time.deltaTime;
+            isMoving = true;
+        }
+        else isMoving = false;
+
         return direction.x >= 0 ? true : false;
     }
     public bool CheckMoveAction()

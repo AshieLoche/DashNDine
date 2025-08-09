@@ -1,2 +1,5 @@
-ID,Name,Description
-1,Region 1,This is the first region.
+﻿ID,Name,Description,Enemy Difficulty,Reputation Required
+1,Region 1,This is the first region.,Easy,0
+2,Region 2,This is the second region.,Easy|Medium,150
+3,Region 3,This is the third region.,Medium|Hard,350
+4,Region 4,This is the fourth region.,Hard,550

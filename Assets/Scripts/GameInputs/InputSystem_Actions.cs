@@ -108,7 +108,7 @@ namespace DashNDine.GameInputSystem
                     ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -139,7 +139,7 @@ namespace DashNDine.GameInputSystem
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dialogue"",
+                    ""name"": ""DialogueSkip"",
                     ""type"": ""Button"",
                     ""id"": ""f002c2dc-1510-494d-8846-1809afba4924"",
                     ""expectedControlType"": """",
@@ -398,7 +398,7 @@ namespace DashNDine.GameInputSystem
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dialogue"",
+                    ""action"": ""DialogueSkip"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1002,7 +1002,7 @@ namespace DashNDine.GameInputSystem
             m_Player_QuickTimeEvent = m_Player.FindAction("QuickTimeEvent", throwIfNotFound: true);
             m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
             m_Player_SkillSelect = m_Player.FindAction("SkillSelect", throwIfNotFound: true);
-            m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
+            m_Player_DialogueSkip = m_Player.FindAction("DialogueSkip", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1101,7 +1101,7 @@ namespace DashNDine.GameInputSystem
         private readonly InputAction m_Player_QuickTimeEvent;
         private readonly InputAction m_Player_Skill;
         private readonly InputAction m_Player_SkillSelect;
-        private readonly InputAction m_Player_Dialogue;
+        private readonly InputAction m_Player_DialogueSkip;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -1134,9 +1134,9 @@ namespace DashNDine.GameInputSystem
             /// </summary>
             public InputAction @SkillSelect => m_Wrapper.m_Player_SkillSelect;
             /// <summary>
-            /// Provides access to the underlying input action "Player/Dialogue".
+            /// Provides access to the underlying input action "Player/DialogueSkip".
             /// </summary>
-            public InputAction @Dialogue => m_Wrapper.m_Player_Dialogue;
+            public InputAction @DialogueSkip => m_Wrapper.m_Player_DialogueSkip;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1178,9 +1178,9 @@ namespace DashNDine.GameInputSystem
                 @SkillSelect.started += instance.OnSkillSelect;
                 @SkillSelect.performed += instance.OnSkillSelect;
                 @SkillSelect.canceled += instance.OnSkillSelect;
-                @Dialogue.started += instance.OnDialogue;
-                @Dialogue.performed += instance.OnDialogue;
-                @Dialogue.canceled += instance.OnDialogue;
+                @DialogueSkip.started += instance.OnDialogueSkip;
+                @DialogueSkip.performed += instance.OnDialogueSkip;
+                @DialogueSkip.canceled += instance.OnDialogueSkip;
             }
 
             /// <summary>
@@ -1207,9 +1207,9 @@ namespace DashNDine.GameInputSystem
                 @SkillSelect.started -= instance.OnSkillSelect;
                 @SkillSelect.performed -= instance.OnSkillSelect;
                 @SkillSelect.canceled -= instance.OnSkillSelect;
-                @Dialogue.started -= instance.OnDialogue;
-                @Dialogue.performed -= instance.OnDialogue;
-                @Dialogue.canceled -= instance.OnDialogue;
+                @DialogueSkip.started -= instance.OnDialogueSkip;
+                @DialogueSkip.performed -= instance.OnDialogueSkip;
+                @DialogueSkip.canceled -= instance.OnDialogueSkip;
             }
 
             /// <summary>
@@ -1546,12 +1546,12 @@ namespace DashNDine.GameInputSystem
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnSkillSelect(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "Dialogue" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "DialogueSkip" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnDialogue(InputAction.CallbackContext context);
+            void OnDialogueSkip(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

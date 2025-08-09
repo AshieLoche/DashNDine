@@ -1,0 +1,20 @@
+﻿ID,Name,QTE (Difficulty-Count-Range-Reps),Note
+1,Imp,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,OWO
+2,Ghoul,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,OWO
+3,Ambush Lurker,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,OWO
+4,Raider Grunt,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,Variant 1
+5,Raider Grunt,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,Variant 2
+6,Raider Grunt,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,Variant 3
+7,Raider Brute,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,OWO
+8,Raider Captain,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,OWO
+9,Hazard Fiend,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,OWO
+10,Crawler Bug,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,Region 1 pest
+11,Bone Thief,Easy_3_4_1|Medium_5_5_1|Hard_6_6_2,Steals pot HP
+12,Toxic Puffer,Easy_3_4_1|Medium_5_5_1|Hard_6_6_2,Poison burst
+13,Fire Wisp,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,Fire trail
+14,Bandit Slicer,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,Fast movement
+15,Wraith Cook,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,Disrupts qte UI briefly
+16,Juggernaut,Easy_3_4_1|Medium_5_5_1|Hard_6_6_1,Slow but 2 QTE chains
+17,Night Howler,Easy_3_4_1|Medium_5_5_1|Hard_6_6_2,Causes screen shake
+18,Sand Scourge,Easy_3_4_1|Medium_5_5_1|Hard_6_6_2,Found in Region 3
+19,Flesh Maw,Easy_3_4_1|Medium_5_5_1|Hard_6_6_2,Appears with boss wave

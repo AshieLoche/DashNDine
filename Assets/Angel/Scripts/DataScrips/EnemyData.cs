@@ -8,6 +8,7 @@ public enum Difficulty
 public class EnemyData : ScriptableObject
 {
     public string type;
+    public int maxHp;
     public Sprite image;
     public float baseSpeed;
     public float baseDmg;

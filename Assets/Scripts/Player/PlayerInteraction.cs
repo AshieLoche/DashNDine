@@ -1,3 +1,5 @@
+using System;
+using DashNDine.CoreSystem;
 using DashNDine.NPCSystem;
 using UnityEngine;
 
@@ -5,21 +7,22 @@ namespace DashNDine.PlayerSystem
 {
     public class PlayerInteraction : MonoBehaviour
     {
+        public Action OnInteractAction;
+
+        [SerializeField] private Player _player;
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _interactDistance;
         private Vector2 _moveDir;
         private Vector2 _lastInteractDir;
-
-        // TODO: CHANGE WHEN NPC IS INTEGRATED
-        private NPCInteraction _npcInteraction;
+        private BaseInteraction _baseInteraction;
 
         private void Awake()
         {
             _playerInput.OnPlayerInteractAction
-                += PlayerInteraction_OnPlayerInteractAction;
+                += PlayerInput_OnPlayerInteractAction;
             _playerInput.OnPlayerMoveAction
-                += PlayerInteraction_OnPlayerMoveAction;
+                += PlayerInput_OnPlayerMoveAction;
         }
 
         private void OnDestroy()
@@ -28,21 +31,29 @@ namespace DashNDine.PlayerSystem
                 return;
 
             _playerInput.OnPlayerInteractAction
-                -= PlayerInteraction_OnPlayerInteractAction;
+                -= PlayerInput_OnPlayerInteractAction;
             _playerInput.OnPlayerMoveAction
-                -= PlayerInteraction_OnPlayerMoveAction;
+                -= PlayerInput_OnPlayerMoveAction;
         }
 
-        private void PlayerInteraction_OnPlayerInteractAction()
+        private void PlayerInput_OnPlayerInteractAction()
         {
-            // TODO: CHANGE WHEN NPC IS INTEGRATED
-            if (_npcInteraction == null)
+            if (_baseInteraction == null)
                 return;
 
-            _npcInteraction.Interaction();
+            switch (_baseInteraction)
+            {
+                case NPCInteraction npcInteraction:
+                    npcInteraction.Interact(transform.position);
+                    OnInteractAction?.Invoke();
+                    break;
+                default:
+                    _baseInteraction.Interact();
+                    break;
+            }
         }
 
-        private void PlayerInteraction_OnPlayerMoveAction(Vector2 moveDir)
+        private void PlayerInput_OnPlayerMoveAction(Vector2 moveDir)
             => _moveDir = moveDir;
 
         private void Update()
@@ -62,20 +73,33 @@ namespace DashNDine.PlayerSystem
 
             if (raycastHit2D)
             {
-                // TODO: Interact with NPC
-                if (raycastHit2D.transform.TryGetComponent(out NPCInteraction npcInteraction))
+                int layer = raycastHit2D.collider.gameObject.layer;
+                LayerMask mask = LayerMask.GetMask("Ingredient", "NPC");
+
+                if ((mask & (1 << layer)) != 0)
                 {
-                    _npcInteraction = npcInteraction;
-                    npcInteraction.DetectPlayerEnter();
+                    if (raycastHit2D.transform.TryGetComponent(out BaseInteraction baseInteraction))
+                    {
+                        _baseInteraction = baseInteraction;
+                        baseInteraction.OnLookedAt();
+                    }
+                }
+                else
+                {
+                    if (_baseInteraction != null)
+                    {
+                        _baseInteraction.OnLookedAway();
+                        _baseInteraction = null;
+                    }
                 }
             }
             else
             {
-                if (_npcInteraction == null)
-                    return;
-
-                _npcInteraction.DetectPlayerExit();
-                _npcInteraction = null;
+                if (_baseInteraction != null)
+                {
+                    _baseInteraction.OnLookedAway();
+                    _baseInteraction = null;
+                }
             }
         }
     }
