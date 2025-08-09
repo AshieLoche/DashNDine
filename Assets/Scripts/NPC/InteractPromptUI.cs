@@ -33,7 +33,7 @@ namespace DashNDine.NPCSystem
                 -= NPCInteraction_OnInteractAction;
         }
 
-        private void NPCInteraction_OnInteractAction()
+        private void NPCInteraction_OnInteractAction(Vector3 playerPosition)
         {
             SetVisibility(false);
             _isInteracted = true;

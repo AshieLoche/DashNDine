@@ -8,20 +8,20 @@ namespace DashNDine.NPCSystem
     {
         public Action OnLookAtAction;
         public Action OnLookAwayAction;
-        public Action OnInteractAction;
+        public Action<Vector3> OnInteractAction;
 
         [SerializeField] private NPC _npc;
 
-        public void DetectPlayerEnter()
+        public void OnLookedAt()
             => OnLookAtAction?.Invoke();
 
-        public void DetectPlayerExit()
+        public void OnLookedAway()
             => OnLookAwayAction?.Invoke();
 
-        public void Interact()
+        public void Interact(Vector3 playerPosition)
         {
             DialogueUI.Instance.SetDialogueByQuestSO(_npc.GetQuestSO());
-            OnInteractAction?.Invoke();
+            OnInteractAction?.Invoke(playerPosition);
         }
     }
 }

@@ -16,15 +16,14 @@ namespace DashNDine.NPCSystem
         {
             _personalQuestSOList = ScriptableObject.CreateInstance<QuestListSO>();
             _personalQuestSOList.SOList = _questListSO.GetQuestSOListByNPCSO(_npcSO);
-            
-            _reputationManager = ReputationManager.Instance;
-
-            _reputationManager.OnReputationUpdateAction
-                += ReputationManager_OnReputationUpdateAction;
         }
 
         private void Start()
         {
+            _reputationManager = ReputationManager.Instance;
+
+            _reputationManager.OnReputationUpdateAction
+                += ReputationManager_OnReputationUpdateAction;
         }
 
         private void OnDestroy()

@@ -40,7 +40,7 @@ namespace DashNDine.PlayerSystem
             if (_npcInteraction == null)
                 return;
 
-            _npcInteraction.Interact();
+            _npcInteraction.Interact(transform.position);
             OnInteractAction?.Invoke();
         }
 
@@ -67,7 +67,7 @@ namespace DashNDine.PlayerSystem
                 if (raycastHit2D.transform.TryGetComponent(out NPCInteraction npcInteraction))
                 {
                     _npcInteraction = npcInteraction;
-                    npcInteraction.DetectPlayerEnter();
+                    npcInteraction.OnLookedAt();
                 }
             }
             else
@@ -75,7 +75,7 @@ namespace DashNDine.PlayerSystem
                 if (_npcInteraction == null)
                     return;
 
-                _npcInteraction.DetectPlayerExit();
+                _npcInteraction.OnLookedAway();
                 _npcInteraction = null;
             }
         }
