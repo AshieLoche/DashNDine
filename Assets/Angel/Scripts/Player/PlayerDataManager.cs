@@ -1,3 +1,5 @@
+using DashNDine.CoreSystem;
+using DashNDine.ScriptableObjectSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +17,9 @@ public class PlayerDataManager : MonoBehaviour
     private int killedEnemies;
     public int KilledEnemies => killedEnemies;
     [SerializeField] AudioManager audioManager;
+
+    [Header("Quest")] 
+    [SerializeField] private QuestSO currentQuest;
 
     [Header("Arena Data")]
     [SerializeField] ArenaData arenaData;
@@ -48,7 +53,8 @@ public class PlayerDataManager : MonoBehaviour
         if (triggerDefense)
         {
             triggerDefense = false;
-            CookFood();
+            QuestSO questSO = null;
+            CookFood(questSO);
         }
         if (playerData.Reputation > 100)
         {
@@ -71,8 +77,9 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerData.killedEnemies++;
     }
-    public void CookFood()
+    public void CookFood(QuestSO quest)
     {
+        if (quest != null ) currentQuest = quest;   
         arenaData.enemyType = enemyType.Defense;
         playerData.inArena = true;
         audioManager.playAmbush();
@@ -80,13 +87,16 @@ public class PlayerDataManager : MonoBehaviour
     }
     public void DoneCooking()
     {
-        playerData.inArena = false;
+        if (currentQuest != null)
+            currentQuest.Complete();
         arenaData.enemyType = enemyType.Ambush;
         audioManager.playNorm();
         SceneManager.UnloadSceneAsync("DefenseArena");
     }
     public void FailedCooking()
     {
+        if (currentQuest != null)
+            currentQuest.Fail();
         playerData.inArena = false;
         arenaData.enemyType = enemyType.Ambush;
         audioManager.playNorm();
