@@ -12,7 +12,7 @@ namespace DashNDine.UISystem
         public Action<QuestSO> OnAcceptAction;
         public Action OnLeaveAction;
         public Action<QuestSO> OnGiveAction;
-        public Action OnCookAction;
+        public Action<QuestSO> OnCookAction;
 
         // UIs
         public Action<ActionType> OnSetAction;
@@ -34,7 +34,7 @@ namespace DashNDine.UISystem
         {
             if (_questManager == null)
                 return;
-            
+
             _questManager.OnCollectIngredientAction
                 -= QuestManager_OnCollectIngredientAction;
         }
@@ -92,6 +92,7 @@ namespace DashNDine.UISystem
 
         public void OnAccept()
         {
+            if (_questSO == null) return;
             _questSO.QuestStatus = QuestStatus.Waiting;
             QuestManager.Instance.AddQuest(_questSO);
             OnAcceptAction?.Invoke(_questSO);
@@ -101,9 +102,15 @@ namespace DashNDine.UISystem
             => OnLeaveAction?.Invoke();
 
         public void OnGive()
-            => OnGiveAction?.Invoke();
+        {
+            if (_questSO == null) return;
+            OnGiveAction?.Invoke(_questSO);
+        }
 
         public void OnCook()
-            => OnCookAction?.Invoke();
+        {
+            if (_questSO == null) return;
+            OnCookAction?.Invoke(_questSO);
+        }
     }
 }
