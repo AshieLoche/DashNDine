@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: Basic Enemy
   image: {fileID: -6587562732477109694, guid: 8f3a833c85ae4b9498f1d50ecd5ff57a, type: 3}
-  baseSpeed: 0.2
+  baseSpeed: 0.4
   baseDmg: 1
   difficulty: 0
   controller: {fileID: 8240579415993794731, guid: b34f793c9dd2b84429f39a7cf2ed704d, type: 3}

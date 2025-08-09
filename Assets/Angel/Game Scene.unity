@@ -6285,11 +6285,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2400426387334924716, guid: 2a931dd503e9d634fa35d59722cbcd66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.058651
+      value: 7.53
       objectReference: {fileID: 0}
     - target: {fileID: 2400426387334924716, guid: 2a931dd503e9d634fa35d59722cbcd66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.19108
+      value: -15.54
       objectReference: {fileID: 0}
     - target: {fileID: 2400426387334924716, guid: 2a931dd503e9d634fa35d59722cbcd66, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6326,6 +6326,18 @@ PrefabInstance:
     - target: {fileID: 3224011751919264201, guid: 2a931dd503e9d634fa35d59722cbcd66, type: 3}
       propertyPath: m_Name
       value: Turtle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537383688773126571, guid: 2a931dd503e9d634fa35d59722cbcd66, type: 3}
+      propertyPath: m_Size.y
+      value: 2.4581842
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537383688773126571, guid: 2a931dd503e9d634fa35d59722cbcd66, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0022557974
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537383688773126571, guid: 2a931dd503e9d634fa35d59722cbcd66, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.09695244
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
