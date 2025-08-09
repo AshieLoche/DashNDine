@@ -9,9 +9,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1596023179045713373, guid: 2d839f70c4f4a89488193f21e420efec, type: 3}
-      propertyPath: npcSO
+      propertyPath: _npcSO
       value: 
       objectReference: {fileID: 11400000, guid: 92ae33ab213e189468614bf390631868, type: 2}
+    - target: {fileID: 1140249980425348537, guid: 2d839f70c4f4a89488193f21e420efec, type: 3}
+      propertyPath: m_Size.x
+      value: 0.676
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140249980425348537, guid: 2d839f70c4f4a89488193f21e420efec, type: 3}
+      propertyPath: m_Size.y
+      value: 0.996
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140249980425348537, guid: 2d839f70c4f4a89488193f21e420efec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4256183143586760365, guid: 925c706efcac88440b296118b1d8a049, type: 3}
+    - target: {fileID: 1140249980425348537, guid: 2d839f70c4f4a89488193f21e420efec, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7027526670042791902, guid: 2d839f70c4f4a89488193f21e420efec, type: 3}
       propertyPath: m_Name
       value: MilatheBaker

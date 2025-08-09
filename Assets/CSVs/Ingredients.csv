@@ -1,7 +1,19 @@
-ID,Name
-1,Wheat
-2,Honey
-3,Carrot
-4,Onion
-5,Tomato
-6,Berry
+﻿ID,Name,Region,Location,Type,Pot Defense Effect
+1,Wheat,1,World,Standard,None
+2,Honey,1,World,Standard,None
+3,Berry,1,World,Standard,None
+4,Tomato,1,World,Standard,None
+5,Carrot,1,World,Standard,None
+6,Onion,1,World,Standard,None
+7,Meat Chunk,2,World,Standard,None
+8,Fish Fillet,2,World,Standard,None
+9,Spice Leaf,2,World,Standard,None
+10,Blue Herb,2,Tower,Special,Shortens QTE chain length temporarily
+11,Rare Mushroom,2,Tower,Special,Some enemy will be auto-completes the last 3 QTE 
+12,Pitaya,3,Tower,Special,Boosts reputation/loot multiplier 
+13,Cactus Gel,3,Tower,Special,"If enemy collide with the pot, pot will not take damge 2 times"
+14,Smoke Pepper,3,World,Standard,None
+15,Special Fruit,4,Tower,Special,Creates decoy pot to draw aggro destroy after one collision
+16,Shadow Egg,4,Tower,Special,Every 3 seconds throw and egg to random close enemy and stun it
+17,Beast Bone,4,Tower,Special,After 3 consecutive succesful elemination stomp the ground to eleminate remaning enemy in range
+18,Molten Herb,4,Tower,Special,Every 3 seconds molten snow will fall and eleminate enemy

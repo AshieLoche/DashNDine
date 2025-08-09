@@ -84,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1070629404809375286
@@ -104,7 +104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8070288547518654999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 6153425238711076574}
   - component: {fileID: 9169293736161343010}
   m_Layer: 0
-  m_Name: Background
+  m_Name: InteractPromptVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -398,14 +398,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: -5373404603274839860, guid: 4278eeb42b80d36429e3636917964ac0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -500,7 +500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78ff2c00bbb2c142acb6022a2bbaede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcSO: {fileID: 0}
+  _npcSO: {fileID: 0}
+  _questListSO: {fileID: 11400000, guid: 93a52ee2921f7124ea478b6829e31a8a, type: 2}
 --- !u!114 &4973627040271637593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,3 +514,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68225a06809ad994b90b3ec30abd649e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _npc: {fileID: -1596023179045713373}

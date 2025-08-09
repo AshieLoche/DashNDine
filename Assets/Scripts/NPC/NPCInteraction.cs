@@ -1,22 +1,27 @@
 using System;
+using DashNDine.UISystem;
 using UnityEngine;
 
 namespace DashNDine.NPCSystem
 {
     public class NPCInteraction : MonoBehaviour
     {
-        public Action OnPlayerEnterAction;
-        public Action OnPlayerExitAction;
+        public Action OnLookAtAction;
+        public Action OnLookAwayAction;
+        public Action OnInteractAction;
+
+        [SerializeField] private NPC _npc;
 
         public void DetectPlayerEnter()
-            => OnPlayerEnterAction?.Invoke();
+            => OnLookAtAction?.Invoke();
 
         public void DetectPlayerExit()
-            => OnPlayerExitAction?.Invoke();
+            => OnLookAwayAction?.Invoke();
 
-        public void Interaction()
+        public void Interact()
         {
-            Debug.Log($"Player interacted with {name}");
+            DialogueUI.Instance.SetDialogueByQuestSO(_npc.GetQuestSO());
+            OnInteractAction?.Invoke();
         }
     }
 }

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f94c6cf65925043b224b84645e5802, type: 3}
+  m_Name: TomotheScoutQuest1SO
+  m_EditorClassIdentifier: 
+  ID: 4
+  Name: Tomo the Scout - Quest 1
+  NPCSO: {fileID: 11400000, guid: 781872a4dd2043e4392167ff438d625d, type: 2}
+  RegionSO: {fileID: 11400000, guid: f3d3293cb3a2961498352739fc4c56d4, type: 2}
+  Description: Find 2 berries and make jelly food, defend the pot.
+  QuestObjectiveList:
+  - IngredientSO: {fileID: 11400000, guid: dd82a91ff1faa9d4daaf42e4bf2c6d23, type: 2}
+    RequiredAmount: 2
+    CollectedAmount: 0
+  QuestType: 1
+  MonsterCount: 20
+  ReputationRequired: 0
+  Reward: 75
+  BonusReward: 25
+  Prompt: "\u201CTwo berries. Jelly time! And watch for trouble.\u201D"
+  Waiting: "\u201CThose berries won\u2019t pick themselves.\u201D"
+  Success: "\u201CNice! Even the scouts are licking their spoons.\u201D"
+  Failure: "\u201CGuess the jelly spoiled on the way.\u201D"
+  QuestStatus: 0

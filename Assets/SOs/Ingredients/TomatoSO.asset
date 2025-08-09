@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b719857efaddbc49aee0de5eff2618f, type: 3}
+  m_Name: TomatoSO
+  m_EditorClassIdentifier: 
+  ID: 4
+  Name: Tomato
+  RegionSO: {fileID: 11400000, guid: f3d3293cb3a2961498352739fc4c56d4, type: 2}
+  SpawnLocation: 0
+  IngredientType: 0
+  PotDefenseEffect: None
+  Sprite: {fileID: -8113185096396602001, guid: 8d517488d7fa2df4c9bbf8ff891c810a, type: 3}
+  PrefabTransform: {fileID: 5467417613054072532, guid: bb15109c4e667ad4992f52f84cb1b172, type: 3}

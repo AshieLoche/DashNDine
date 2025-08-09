@@ -12,6 +12,7 @@ namespace DashNDine.PlayerSystem
         public Action OnPlayerBehindAction;
         
         [SerializeField] private PlayerInput _playerInput;
+        [SerializeField] private PlayerInteraction _playerInteraction;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private Vector3 _originOffsetMove;
@@ -19,27 +20,38 @@ namespace DashNDine.PlayerSystem
         [SerializeField] private Vector3 _originOffsetDepth;
         [SerializeField] private Vector2 _capsuleSizeDepth;
         private Vector2 _moveDir;
+        public bool _canMove = true;
 
         private void Awake()
         {
             _playerInput.OnPlayerMoveAction
                 += PlayerInteraction_OnPlayerMoveAction;
+            _playerInteraction.OnInteractAction
+                += PlayerInteraction_OnPlayerInteractAction;
         }
 
         private void OnDestroy()
         {
-            if (_playerInput == null)
-                return;
+            if (_playerInput != null)
+                _playerInput.OnPlayerMoveAction
+                    -= PlayerInteraction_OnPlayerMoveAction;
 
-            _playerInput.OnPlayerMoveAction
-                -= PlayerInteraction_OnPlayerMoveAction;
+            if (_playerInteraction != null)
+                _playerInteraction.OnInteractAction
+                    -= PlayerInteraction_OnPlayerInteractAction;
         }
+
+        private void PlayerInteraction_OnPlayerInteractAction()
+            => _canMove = false;
 
         private void PlayerInteraction_OnPlayerMoveAction(Vector2 moveDir)
             => _moveDir = moveDir;
 
         private void Update()
         {
+            if (!_canMove)
+                return;
+
             HandleCover();
             HandleMovement();
         }
