@@ -1696,7 +1696,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3739,6 +3739,8 @@ MonoBehaviour:
   ambushPanel: {fileID: 1019566212}
   defensePanel: {fileID: 1967657237}
   countdownTxt: {fileID: 1730023201}
+  eventTitle: {fileID: 277823719}
+  eventPrompt: {fileID: 686171505}
 --- !u!1 &1899620159
 GameObject:
   m_ObjectHideFlags: 0

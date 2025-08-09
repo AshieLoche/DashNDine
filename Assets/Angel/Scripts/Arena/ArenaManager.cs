@@ -17,7 +17,7 @@ public class ArenaManager : MonoBehaviour
     [Header("Scene UI")]
     [SerializeField] private GameObject uiPanel;
     [SerializeField] private GameObject ambushPanel, defensePanel;   
-    [SerializeField] private TextMeshProUGUI countdownTxt;
+    [SerializeField] private TextMeshProUGUI countdownTxt, eventTitle, eventPrompt;
 
     private void Awake()
     {
@@ -27,6 +27,17 @@ public class ArenaManager : MonoBehaviour
     private void Start()
     {
         countDownTime = startTime;
+        switch (arenaData.enemyType)
+        {
+            case enemyType.Ambush:
+                eventTitle.text = "Ambushed!";
+                eventPrompt.text = "Defeat your enemies to survive!";
+                break;
+            case enemyType.Defense:
+                eventTitle.text = "Pot Defense";
+                eventPrompt.text = "Defend the pot while its cookin'!";
+                break;
+        }
     }
     private void Update()
     {
