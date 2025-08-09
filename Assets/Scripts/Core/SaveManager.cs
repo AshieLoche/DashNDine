@@ -17,6 +17,13 @@ namespace DashNDine.CoreSystem
         private readonly string _playerSaveDataFilePath = _saveFolderPath + "PlayerSaveData.csv";
         private readonly string _questSaveDataFilePath = _saveFolderPath + "QuestSaveData.csv";
 
+        protected override void Awake()
+        {
+            base.Awake();
+
+            _questListSO.ResetQuestObjectList();
+        }
+
         public void Save()
         {
             List<List<string>> playerSaveDataArray = new List<List<string>>

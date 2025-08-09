@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dialogue",
+                    "name": "DialogueSkip",
                     "type": "Button",
                     "id": "f002c2dc-1510-494d-8846-1809afba4924",
                     "expectedControlType": "",
@@ -310,7 +310,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dialogue",
+                    "action": "DialogueSkip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

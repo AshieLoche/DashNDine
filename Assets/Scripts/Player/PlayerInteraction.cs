@@ -1,4 +1,5 @@
 using System;
+using DashNDine.CoreSystem;
 using DashNDine.NPCSystem;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace DashNDine.PlayerSystem
         [SerializeField] private float _interactDistance;
         private Vector2 _moveDir;
         private Vector2 _lastInteractDir;
-        private NPCInteraction _npcInteraction;
+        private BaseInteraction _baseInteraction;
 
         private void Awake()
         {
@@ -37,11 +38,19 @@ namespace DashNDine.PlayerSystem
 
         private void PlayerInput_OnPlayerInteractAction()
         {
-            if (_npcInteraction == null)
+            if (_baseInteraction == null)
                 return;
 
-            _npcInteraction.Interact(transform.position);
-            OnInteractAction?.Invoke();
+            switch (_baseInteraction)
+            {
+                case NPCInteraction npcInteraction:
+                    npcInteraction.Interact(transform.position);
+                    OnInteractAction?.Invoke();
+                    break;
+                default:
+                    _baseInteraction.Interact();
+                    break;
+            }
         }
 
         private void PlayerInput_OnPlayerMoveAction(Vector2 moveDir)
@@ -64,19 +73,33 @@ namespace DashNDine.PlayerSystem
 
             if (raycastHit2D)
             {
-                if (raycastHit2D.transform.TryGetComponent(out NPCInteraction npcInteraction))
+                int layer = raycastHit2D.collider.gameObject.layer;
+                LayerMask mask = LayerMask.GetMask("Ingredient", "NPC");
+
+                if ((mask & (1 << layer)) != 0)
                 {
-                    _npcInteraction = npcInteraction;
-                    npcInteraction.OnLookedAt();
+                    if (raycastHit2D.transform.TryGetComponent(out BaseInteraction baseInteraction))
+                    {
+                        _baseInteraction = baseInteraction;
+                        baseInteraction.OnLookedAt();
+                    }
+                }
+                else
+                {
+                    if (_baseInteraction != null)
+                    {
+                        _baseInteraction.OnLookedAway();
+                        _baseInteraction = null;
+                    }
                 }
             }
             else
             {
-                if (_npcInteraction == null)
-                    return;
-
-                _npcInteraction.OnLookedAway();
-                _npcInteraction = null;
+                if (_baseInteraction != null)
+                {
+                    _baseInteraction.OnLookedAway();
+                    _baseInteraction = null;
+                }
             }
         }
     }
