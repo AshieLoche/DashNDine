@@ -18,6 +18,11 @@ namespace DashNDine.CoreSystem
             _questListSO = ScriptableObject.CreateInstance<QuestListSO>();
         }
 
+        private void Start()
+        {
+            
+        }
+
         public void AddQuest(QuestSO questSO)
             => _questListSO.AddQuestSO(questSO);
 

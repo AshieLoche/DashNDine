@@ -11,7 +11,7 @@ namespace DashNDine.UISystem
         // Actions
         public Action<QuestSO> OnAcceptAction;
         public Action OnLeaveAction;
-        public Action OnGiveAction;
+        public Action<QuestSO> OnGiveAction;
         public Action OnCookAction;
 
         // UIs
