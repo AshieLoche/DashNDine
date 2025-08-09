@@ -1,5 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum enemyType
@@ -12,6 +15,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private EnemyData enemyData;
     [Header("Basic Enemy Information")]
     [SerializeField] private enemyType enemyType;
+    [SerializeField] private int hp;
     [SerializeField] private float speed;
     [SerializeField] private GameObject target;
     [SerializeField] private List<int> qteSequence;
@@ -20,9 +24,9 @@ public class EnemyManager : MonoBehaviour
 
     [Header("Raider Enemy Information")]
     [SerializeField] private Vector3 startingPosition;
-    [SerializeField] private float range;
+    [SerializeField] private float range, deadTimer, deathTime = 15f;
     [SerializeField] private float playerDistance, spawnPtDistance, moveDistanceThreshold;
-    private bool isLookingRight, isMoving;
+    private bool isLookingRight, isMoving, isDead=false;
 
     [Header("Player Data")]
     [SerializeField] PlayerDataManager playerDataManager;
@@ -50,6 +54,10 @@ public class EnemyManager : MonoBehaviour
     {
         InitializeEnemy();
         playerDataManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDataManager>();
+        if(enemyType == enemyType.Raider)
+        {
+            hp = enemyData.maxHp;
+        }
     }
 
     private void OnEnable()
@@ -74,6 +82,15 @@ public class EnemyManager : MonoBehaviour
             {
                 isMoving = true;
                 isLookingRight = enemyMovement.StartMoving(startingPosition, speed);
+            }
+
+            if (isDead)
+            {
+                deadTimer += Time.deltaTime;
+                if(deadTimer> deathTime)
+                {
+                    gameObject.SetActive(true);
+                }
             }
         }
         else
@@ -126,7 +143,15 @@ public class EnemyManager : MonoBehaviour
         int correctInputs = enemyAction.QTEKeyInputCheck(inputtedKey, qteSequence);
         enemyUI.IndicateCorrectInput(correctInputs);
     }
-
+    public void BurnEnemy(int dmg)
+    {
+        hp -= dmg;
+        if(hp <=0)Die();
+    }
+    public void SlowEnemy(float divider)
+    {
+        StartCoroutine(Slowed(divider));
+    }
 
     public void SetDifficulty(Difficulty difficulty)
     {
@@ -145,10 +170,22 @@ public class EnemyManager : MonoBehaviour
         playerDataManager.EnemyKilled();
         enemyMovement.ReturnToPosition();
         enemyAction.DisableEnemy();
+        if (enemyType == enemyType.Raider)
+        {
+            deadTimer = 0;
+            isDead = true;
+        }
     }
 
     public void ResetEnemy()
     {
         enemyMovement.ReturnToPosition();
+    }
+    IEnumerator Slowed(float div)
+    {
+        var s = speed;
+        speed = speed * div;
+        yield return new WaitForSeconds(3);
+        speed = s;
     }
 }
