@@ -4,6 +4,7 @@ using DashNDine.EnumSystem;
 using DashNDine.IngredientSystem;
 using DashNDine.MiscSystem;
 using DashNDine.ScriptableObjectSystem;
+using UnityEngine;
 
 namespace DashNDine.UISystem
 {
@@ -109,6 +110,9 @@ namespace DashNDine.UISystem
         }
 
         public void OnCook()
-            => OnCookAction?.Invoke();
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDataManager>().CookFood(_questSO);
+            OnCookAction?.Invoke();
+        }
     }
 }
