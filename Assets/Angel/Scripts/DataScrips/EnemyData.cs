@@ -9,6 +9,7 @@ public class EnemyData : ScriptableObject
 {
     public string type;
     public int maxHp;
+    public int reputation;
     public Sprite image;
     public float baseSpeed;
     public int baseDmg;

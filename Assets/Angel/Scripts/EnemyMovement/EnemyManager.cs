@@ -26,7 +26,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Vector3 startingPosition;
     [SerializeField] private float range, deadTimer, deathTime = 15f;
     [SerializeField] private float playerDistance, spawnPtDistance, moveDistanceThreshold;
-    private bool isLookingRight, isMoving, isDead=false;
+    private bool isLookingRight, isMoving = false, isDead=false;
 
     [Header("Player Data")]
     [SerializeField] PlayerDataManager playerDataManager;
@@ -79,14 +79,22 @@ public class EnemyManager : MonoBehaviour
             if (playerDistance < range && spawnPtDistance < moveDistanceThreshold)
             {
                 isMoving = true;
+                animator.SetBool("isWalking", true);
                 isLookingRight = enemyMovement.StartMoving(target.transform.position, speed);
+            }
+            else if (spawnPtDistance > moveDistanceThreshold || (playerDistance > range && spawnPtDistance > 0.5f))
+            {
+                isMoving = true;
+                animator.SetBool("isWalking", true);
+
+                isLookingRight = enemyMovement.StartMoving(startingPosition, speed);
             }
             else
             {
-                isMoving = true;
-                isLookingRight = enemyMovement.StartMoving(startingPosition, speed);
+                animator.SetBool("isWalking", isMoving);
+                isMoving = false;
             }
-            animator.SetBool("isWalking", isMoving);
+
             if (isDead)
             {
                 deadTimer += Time.deltaTime;
@@ -176,6 +184,7 @@ public class EnemyManager : MonoBehaviour
         enemyAction.DisableEnemy();
         if (enemyType == enemyType.Raider)
         {
+            playerDataManager.AddReputation(enemyData.reputation);
             deadTimer = 0;
             isDead = true;
         }

@@ -28,7 +28,6 @@ public class AmbushManager : MonoBehaviour
     private void Start()
     {
         spawner = GetComponent<EnemySpawner>();
-
         start = false;
     }
     public void StartDefense(Difficulty difficulty)

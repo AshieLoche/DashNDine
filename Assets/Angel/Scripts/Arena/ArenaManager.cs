@@ -6,6 +6,7 @@ public class ArenaManager : MonoBehaviour
 {
     [Header("Prerequisites")]
     [SerializeField] private ArenaData arenaData;
+    [SerializeField] private PlayerData playerData;
     private AmbushManager ambushManager;
     private PotDefenseManager potDefenseManager;
 
@@ -26,6 +27,7 @@ public class ArenaManager : MonoBehaviour
     }
     private void Start()
     {
+        playerData.killedEnemies = 0;
         countDownTime = startTime;
         switch (arenaData.enemyType)
         {

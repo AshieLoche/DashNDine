@@ -3690,6 +3690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arenaData: {fileID: 11400000, guid: dfddc8b32f552f1419ace664cb011896, type: 2}
+  playerData: {fileID: 11400000, guid: bae6cfd180ccb394e92c83249647cab0, type: 2}
   startTime: 3
   uiPanel: {fileID: 51308219}
   ambushPanel: {fileID: 1019566212}
