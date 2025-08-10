@@ -1,7 +1,9 @@
 using DashNDine.EnumSystem;
 using DashNDine.ScriptableObjectSystem;
+using DashNDine.UISystem;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +20,7 @@ public class QuestUI : MonoBehaviour
     [SerializeField] private List<IngredientSO> ingredients;
     [SerializeField] private Canvas questCanvas;
     private QuestSO acceptedQuests;
+    private QuestListSO acceptedQuestsList;
 
     [Header("Panels")]
     [SerializeField] private GameObject questPanel;
@@ -36,6 +39,16 @@ public class QuestUI : MonoBehaviour
     private Vector2 initSize;
     private bool isMinimized = false;
 
+    public static QuestUI Instance;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance);
+        }
+        else Instance = this;
+    }
     private void Start()
     {
         initialPos = toggleBtn.GetComponent<RectTransform>().position;
@@ -59,7 +72,10 @@ public class QuestUI : MonoBehaviour
             isQuestComplete = false;
         }
     }
-
+    public void trackQuest()
+    {
+        StartCoroutine(StartQuest(ChoicesUI.Instance.GetCurrentQuest()));
+    }
     public IEnumerator StartQuest(QuestSO quest)
     {
         questPanel.SetActive(true);
@@ -70,7 +86,7 @@ public class QuestUI : MonoBehaviour
 
         npcName.text = acceptedQuests.Name;
         questDescription.text = acceptedQuests.Description;
-        questRequirement.text = acceptedQuests.Name;
+        questRequirement.text = "Make a List of string fromthe required ingredients. Note me how to check whether the ingredient is obtained or not.";
         start = false;
         yield return null;
     }

@@ -98,6 +98,7 @@ namespace DashNDine.UISystem
             IngredientSpawner.Instance.SetIngredientSpawner(_questSO);
             QuestManager.Instance.AddQuest(_questSO);
             OnAcceptAction?.Invoke();
+            QuestUI.Instance.trackQuest();
         }
 
         public void OnLeave()
@@ -113,6 +114,11 @@ namespace DashNDine.UISystem
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDataManager>().CookFood(_questSO);
             OnCookAction?.Invoke();
+        }
+
+        public QuestSO GetCurrentQuest()
+        {
+            return _questSO;
         }
     }
 }
