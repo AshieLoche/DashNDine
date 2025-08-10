@@ -17,10 +17,7 @@ MonoBehaviour:
   NPCSO: {fileID: 11400000, guid: 781872a4dd2043e4392167ff438d625d, type: 2}
   RegionSO: {fileID: 11400000, guid: f3d3293cb3a2961498352739fc4c56d4, type: 2}
   Description: Find 2 berries and make jelly food, defend the pot.
-  QuestObjectiveList:
-  - IngredientSO: {fileID: 11400000, guid: dd82a91ff1faa9d4daaf42e4bf2c6d23, type: 2}
-    RequiredAmount: 2
-    CollectedAmount: 0
+  QuestObjectiveList: {fileID: 11400000, guid: e994710c598c6c34099eee6c7b2ede3a, type: 2}
   QuestType: 1
   MonsterCount: 20
   ReputationRequired: 0

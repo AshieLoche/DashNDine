@@ -12,7 +12,6 @@ namespace DashNDine.IngredientSystem
             base.Interact();
 
             QuestManager.Instance.CollectIngredient(_ingredient.GetIngredientSO());
-            IngredientSpawner.Instance.RemoveIngredient(_ingredient);
 
             _ingredient.DestroySelf();
         }

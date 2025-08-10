@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using DashNDine.MiscSystem;
 using DashNDine.ScriptableObjectSystem;
-using DashNDine.StructSystem;
-using DashNDine.UISystem;
 using UnityEngine;
 
 namespace DashNDine.IngredientSystem
@@ -16,26 +14,8 @@ namespace DashNDine.IngredientSystem
         private float _timer = 0f;
         private bool _isSpawning = false;
         private bool _canSpawn = true;
-        private ChoicesUI _choicesUI;
         private IngredientListSO _questIngredientListSO;
         private List<Ingredient> _spawnedIngredientList = new List<Ingredient>();
-
-        private void Start()
-        {
-            _choicesUI = ChoicesUI.Instance;
-
-            _choicesUI.OnAcceptAction
-                += ChoicesUI_OnAcceptAction;
-        }
-
-        private void OnDestroy()
-        {
-            if (_choicesUI == null)
-                return;
-
-            _choicesUI.OnAcceptAction
-                -= ChoicesUI_OnAcceptAction;
-        }
 
         private void Update()
         {
@@ -67,11 +47,11 @@ namespace DashNDine.IngredientSystem
             }
         }
 
-        private void ChoicesUI_OnAcceptAction(QuestSO questSO)
+        public void SetIngredientSpawner(QuestSO questSO)
         {
-            List<QuestObjective> questObjectiveList = questSO.QuestObjectiveList;
+            IngredientStackListSO  questObjectiveList = questSO.QuestObjectiveList;
             _questIngredientListSO = ScriptableObject.CreateInstance<IngredientListSO>();
-            _questIngredientListSO.SOList = questObjectiveList.Select(e => e.IngredientSO).ToList();
+            _questIngredientListSO.SOList = questObjectiveList.GetIngredientSOList();
             _timer = _spawnInterval;
             _canSpawn = true;
             _isSpawning = true;

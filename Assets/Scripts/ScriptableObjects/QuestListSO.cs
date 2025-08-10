@@ -1,41 +1,42 @@
 using System.Collections.Generic;
-using DashNDine.EnumSystem;
 
 namespace DashNDine.ScriptableObjectSystem
 {
     public class QuestListSO : BaseListSO<QuestSO>
     {
         public List<QuestSO> GetQuestSOListByNPCSO(NPCSO npcSO)
-            => SOList.FindAll(e => e.NPCSO == npcSO);
+            => SOList.FindAll(e => e.CompareNPCSO(npcSO));
 
         public QuestSO GetLastAvailableQuestSO()
-            => SOList.FindLast(e => e.QuestStatus != QuestStatus.Locked);
+            => SOList.FindLast(e => !e.IsLocked());
+            
+        public void LockAll()
+        {
+            foreach (QuestSO questSO in SOList)
+            {
+                questSO.Lock();
+            }
+        }
 
         public void AddQuestSO(QuestSO questSO)
         {
             if (SOList.Contains(questSO))
             {
-                int index = SOList.FindIndex(e => e == questSO);
+                int index = GetIndex(questSO);
                 SOList[index] = questSO;
             }
             else
                 SOList.Add(questSO);
         }
 
-        public void ResetQuestObjectList()
+        public void RemoveQuestSO(QuestSO questSO)
         {
-            foreach (QuestSO questSO in SOList)
-            {
-                questSO.ResetQuestObjectiveList();
-            }
-        }
+            List<QuestSO> questSOList = SOList;
 
-        public void CollectIngredient(IngredientSO ingredientSO)
-        {
-            foreach (QuestSO questSO in SOList)
-            {
-                questSO.CollectIngredient(ingredientSO);
-            }
+            if (!questSOList.Contains(questSO))
+                return;
+
+            questSOList.Remove(questSO);
         }
     }
 }

@@ -9,10 +9,36 @@ namespace DashNDine.CoreSystem
     {
         public Action<int> OnReputationUpdateAction;
 
-        [SerializeField] PlayerSO _playerSO;
+        [SerializeField] private PlayerSO _playerSO;
+        private QuestManager _questManager;
 
-        public void Start()
+        private void Start()
         {
+            _playerSO.ClearReputationAmount();
+
+            OnReputationUpdateAction?.Invoke(_playerSO.ReputationAmount);
+
+            _questManager = QuestManager.Instance;
+
+            _questManager.OnCompleteQuestAction
+                += QuestManager_OnCompleteQuestAction;
+        }
+
+        private void OnDestroy()
+        {
+            if (_questManager == null)
+                return;
+
+            _questManager.OnCompleteQuestAction
+                -= QuestManager_OnCompleteQuestAction;
+        }
+
+        private void QuestManager_OnCompleteQuestAction(int reputationAmount)
+            => AddReputation(reputationAmount);
+
+        private void AddReputation(int reputationAmount)
+        {
+            _playerSO.ReputationAmount += reputationAmount;
             OnReputationUpdateAction?.Invoke(_playerSO.ReputationAmount);
         }
     }

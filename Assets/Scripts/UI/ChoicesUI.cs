@@ -1,6 +1,7 @@
 using System;
 using DashNDine.CoreSystem;
 using DashNDine.EnumSystem;
+using DashNDine.IngredientSystem;
 using DashNDine.MiscSystem;
 using DashNDine.ScriptableObjectSystem;
 
@@ -9,10 +10,10 @@ namespace DashNDine.UISystem
     public class ChoicesUI : SingletonBehaviour<ChoicesUI>
     {
         // Actions
-        public Action<QuestSO> OnAcceptAction;
+        public Action OnAcceptAction;
         public Action OnLeaveAction;
-        public Action<QuestSO> OnGiveAction;
-        public Action<QuestSO> OnCookAction;
+        public Action OnGiveAction;
+        public Action OnCookAction;
 
         // UIs
         public Action<ActionType> OnSetAction;
@@ -39,9 +40,9 @@ namespace DashNDine.UISystem
                 -= QuestManager_OnCollectIngredientAction;
         }
 
-        private void QuestManager_OnCollectIngredientAction()
+        private void QuestManager_OnCollectIngredientAction(IngredientStackListSO inventorySO)
         {
-            bool _isComplete = _questSO.CompareAmount();
+            bool _isComplete = _questSO.CheckInventory(inventorySO);
             OnUpdateAction?.Invoke(_isComplete);
         }
 
@@ -93,9 +94,10 @@ namespace DashNDine.UISystem
         public void OnAccept()
         {
             if (_questSO == null) return;
-            _questSO.QuestStatus = QuestStatus.Waiting;
+            _questSO.Wait();
+            IngredientSpawner.Instance.SetIngredientSpawner(_questSO);
             QuestManager.Instance.AddQuest(_questSO);
-            OnAcceptAction?.Invoke(_questSO);
+            OnAcceptAction?.Invoke();
         }
 
         public void OnLeave()
@@ -103,14 +105,14 @@ namespace DashNDine.UISystem
 
         public void OnGive()
         {
-            if (_questSO == null) return;
-            OnGiveAction?.Invoke(_questSO);
+            _questManager.CompleteQuest(_questSO);
+            OnGiveAction?.Invoke();
         }
 
         public void OnCook()
         {
             if (_questSO == null) return;
-            OnCookAction?.Invoke(_questSO);
+            OnCookAction?.Invoke();
         }
     }
 }

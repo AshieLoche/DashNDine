@@ -1,4 +1,3 @@
-using System;
 using DashNDine.EnumSystem;
 using DashNDine.GameInputSystem;
 using DashNDine.MiscSystem;
@@ -33,6 +32,10 @@ namespace DashNDine.UISystem
             
             _choicesUI.OnAcceptAction
                 += ChoicesUI_OnAcceptAction;
+            _choicesUI.OnGiveAction
+                += ChoicesUI_OnGiveAction;
+            _choicesUI.OnCookAction
+                += ChoicesUI_OnCookAction;
             _choicesUI.OnLeaveAction
                 += ChoicesUI_OnLeaveAction;
 
@@ -57,12 +60,22 @@ namespace DashNDine.UISystem
             {
                 _choicesUI.OnAcceptAction
                     -= ChoicesUI_OnAcceptAction;
+                _choicesUI.OnGiveAction
+                    -= ChoicesUI_OnGiveAction;    
+                _choicesUI.OnCookAction
+                    -= ChoicesUI_OnCookAction;
                 _choicesUI.OnLeaveAction
                     -= ChoicesUI_OnLeaveAction;
             }
         }
 
-        private void ChoicesUI_OnAcceptAction(QuestSO questSO)
+        private void ChoicesUI_OnCookAction()
+            => ResetDialogue();
+            
+        private void ChoicesUI_OnGiveAction()
+            => ResetDialogue();
+
+        private void ChoicesUI_OnAcceptAction()
             => ResetDialogue();
 
         private void ChoicesUI_OnLeaveAction()

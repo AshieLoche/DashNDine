@@ -67,7 +67,7 @@ public class PlayerDataManager : MonoBehaviour
     {
         playerData.Reputation += reputation;
     }
-    public async void EnemyKilled()
+    public void EnemyKilled()
     {
         playerData.killedEnemies++;
     }

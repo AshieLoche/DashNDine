@@ -1,6 +1,5 @@
 using System;
 using DashNDine.CoreSystem;
-using DashNDine.ScriptableObjectSystem;
 using DashNDine.UISystem;
 using UnityEngine;
 
@@ -19,6 +18,10 @@ namespace DashNDine.NPCSystem
 
             _choicesUI.OnAcceptAction
                 += ChoicesUI_OnAcceptAction;
+            _choicesUI.OnGiveAction
+                += ChoicesUI_OnGiveAction;
+            _choicesUI.OnCookAction
+                += ChoicesUI_OnCookAction;
             _choicesUI.OnLeaveAction
                 += ChoicesUI_OnLeaveAction;
         }
@@ -29,12 +32,22 @@ namespace DashNDine.NPCSystem
                 return;
 
             _choicesUI.OnAcceptAction
-                += ChoicesUI_OnAcceptAction;
+                -= ChoicesUI_OnAcceptAction;
+            _choicesUI.OnGiveAction
+                -= ChoicesUI_OnGiveAction;
+            _choicesUI.OnCookAction
+                -= ChoicesUI_OnCookAction;
             _choicesUI.OnLeaveAction
                 -= ChoicesUI_OnLeaveAction;
         }
 
-        private void ChoicesUI_OnAcceptAction(QuestSO sO)
+        private void ChoicesUI_OnCookAction()
+            => SetIsInteracted(false);
+
+        private void ChoicesUI_OnGiveAction()
+            => SetIsInteracted(false);
+
+        private void ChoicesUI_OnAcceptAction()
             => SetIsInteracted(false);
 
         private void ChoicesUI_OnLeaveAction()
@@ -42,6 +55,9 @@ namespace DashNDine.NPCSystem
 
         public void Interact(Vector3 playerPosition)
         {
+            if (_isInteracted)
+                return;
+            
             Interact();
             DialogueUI.Instance.SetDialogueByQuestSO(_npc.GetQuestSO());
             OnInteractWithParamAction?.Invoke(playerPosition);

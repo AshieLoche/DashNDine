@@ -6,5 +6,9 @@ namespace DashNDine.ScriptableObjectSystem
     public class PlayerSO : BaseSO
     {
         public int ReputationAmount;
+        public IngredientStackListSO InventorySO;
+
+        public void ClearReputationAmount()
+            => ReputationAmount = 0;
     }
 }

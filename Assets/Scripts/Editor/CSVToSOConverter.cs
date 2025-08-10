@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using DashNDine.ClassSystem;
 using DashNDine.EnumSystem;
 using DashNDine.MiscSystem;
 using DashNDine.ScriptableObjectSystem;
@@ -17,6 +18,7 @@ namespace DashNDine.EditorSystem
         {
             Regions,
             Ingredients,
+            IngredientStacks,
             NPCs,
             Quests,
             Monsters
@@ -50,6 +52,14 @@ namespace DashNDine.EditorSystem
         {
             string csvFilePath = $"Assets/CSVs/{csvType}.csv";
             string soFolderPath = $"Assets/SOs";
+
+            if (csvType == CSVType.IngredientStacks)
+            {
+                // Save Inventory
+                TrySaveInventorySO(soFolderPath);
+                return;
+            }
+
 
             using StreamReader reader = new StreamReader(csvFilePath, Encoding.UTF8);
 
@@ -97,13 +107,13 @@ namespace DashNDine.EditorSystem
                         return;
 
                     // Retrieve IngredientSO
-                        IngredientSO ingredientSO = TryReplaceBaseSOMainData<IngredientSO>(csvType, values, soFolderPath);
+                    IngredientSO ingredientSO = TryReplaceBaseSOMainData<IngredientSO>(csvType, values, soFolderPath);
 
                     // Replace IngredientSO RegionSO
                     ingredientSO.RegionSO = TryReplaceSO<RegionSO, RegionListSO>(ingredientSO.RegionSO, CSVType.Regions, values[2], soFolderPath);
 
                     // Replace IngredientSO SpawnLocation
-                    ingredientSO.SpawnLocation = TryReplaceEnum(ingredientSO.SpawnLocation,  values[3]);
+                    ingredientSO.SpawnLocation = TryReplaceEnum(ingredientSO.SpawnLocation, values[3]);
 
                     // Replace IngredientSO IngredientType
                     ingredientSO.IngredientType = TryReplaceEnum(ingredientSO.IngredientType, values[4]);
@@ -117,10 +127,10 @@ namespace DashNDine.EditorSystem
                     // Replace IngredientSO PrefabTransform;
                     ingredientSO.PrefabTransform = TryReplacePrefabTransform(ingredientSO.PrefabTransform, csvType, ingredientSO.name);
 
-                    // Save RegionSO
+                    // Save IngredientSO
                     SaveSO(ingredientSO);
 
-                    // Save RegionListSO
+                    // Save IngredientListSO
                     TrySaveListSO<IngredientSO, IngredientListSO>(ingredientSO, csvType, soFolderPath);
                     break;
                 case CSVType.NPCs:
@@ -167,7 +177,7 @@ namespace DashNDine.EditorSystem
                     questSO.Description = TryReplaceString(questSO.Description, values[4]);
 
                     // Replace QuestSO QuestObjectiveList
-                    questSO.QuestObjectiveList = TryReplaceQuestObjectiveList(values[5], soFolderPath);
+                    questSO.QuestObjectiveList = TryReplaceQuestObjectiveList(questSO.name, values[5], soFolderPath);
 
                     // Replace QuestSO QuestType
                     questSO.QuestType = TryReplaceEnum(questSO.QuestType, values[6]);
@@ -197,7 +207,10 @@ namespace DashNDine.EditorSystem
                     questSO.Failure = TryReplaceString(questSO.Failure, values[14]);
 
                     // Replace QuestSO QuestStatus
-                    questSO.QuestStatus = QuestStatus.Locked;
+                    questSO.Lock();
+                    
+                    // Replace QuestSO HasCookedSuccessfully
+                    questSO.CookFailed();
 
                     // Save QuestSO
                     SaveSO(questSO);
@@ -210,10 +223,16 @@ namespace DashNDine.EditorSystem
                     MonsterSO monsterSO = TryReplaceBaseSOMainData<MonsterSO>(csvType, values, soFolderPath);
 
                     // Replace MonsterSO MonsterQTEList
-                    monsterSO.MonsterQTEList = TryReplaceMonsterQTEList(values[2], soFolderPath);
+                    monsterSO.MonsterQTEList = TryReplaceMonsterQTEStructList(values[2]);
 
                     // Replace MonsterSO Note
                     monsterSO.Note = TryReplaceString(monsterSO.Note, values[3]);
+
+                    // Save MonsterSO
+                    SaveSO(monsterSO);
+
+                    // Save MonsterListSO
+                    TrySaveListSO<MonsterSO, MonsterListSO>(monsterSO, csvType, soFolderPath);
                     break;
                 default:
                     break;
@@ -403,10 +422,16 @@ namespace DashNDine.EditorSystem
             return oldPrefabTransform;
         }
 
-        private static List<QuestObjective> TryReplaceQuestObjectiveList(string value, string soFolderPath)
+        private static IngredientStackListSO TryReplaceQuestObjectiveList(string name, string value, string soFolderPath)
         {
+            string soName = $"{name}QuestObjectiveListSO";
+            string islSOFilePath = soFolderPath + $"/IngredientStacks/" + soName + ".asset";
+
             IngredientListSO ingredientListSO = TryGetListSO<IngredientSO, IngredientListSO>(CSVType.Ingredients, soFolderPath);
-            List<QuestObjective> questObjectiveList = new List<QuestObjective>();
+            IngredientStackListSO questObjectiveList = LoadOrCreateSO<IngredientStackListSO>(islSOFilePath);
+            questObjectiveList.name = soName;
+
+            questObjectiveList.Clear();
 
             foreach (string qoJoined in value.Split('|'))
             {
@@ -418,7 +443,8 @@ namespace DashNDine.EditorSystem
 
                     if (int.TryParse(qoSeparated[1], out int requiredAmount))
                     {
-                        questObjectiveList.Add(new QuestObjective(ingredientSO, requiredAmount));
+                        IngredientStackClass questObjective = new IngredientStackClass(ingredientSO, requiredAmount);
+                        questObjectiveList.Add(questObjective);
                     }
                     else
                         Debug.LogError($"Cannot convert {qoSeparated[1]} to int");
@@ -427,12 +453,14 @@ namespace DashNDine.EditorSystem
                     Debug.LogError($"Cannot convert {qoSeparated[0]} to SO");
             }
 
+            SaveSO(questObjectiveList);
+
             return questObjectiveList;
         }
 
-        private static List<MonsterQTE> TryReplaceMonsterQTEList(string value, string soFolderPath)
+        private static List<MonsterQTEStruct> TryReplaceMonsterQTEStructList(string value)
         {
-            List<MonsterQTE> monsterQTEList = new List<MonsterQTE>();
+            List<MonsterQTEStruct> monsterQTEList = new List<MonsterQTEStruct>();
 
             foreach (string mqteJoined in value.Split('|'))
             {
@@ -446,7 +474,7 @@ namespace DashNDine.EditorSystem
                         {
                             if (int.TryParse(mqteSeparated[3], out int qteReps))
                             {
-                                monsterQTEList.Add(new MonsterQTE(monsterDifficulty, qteCount, qteRange, qteReps));
+                                monsterQTEList.Add(new MonsterQTEStruct(monsterDifficulty, qteCount, qteRange, qteReps));
                             }
                         }
                     }
@@ -465,24 +493,44 @@ namespace DashNDine.EditorSystem
             AssetDatabase.SaveAssetIfDirty(so);
         }
 
-        private static void TrySaveListSO<TBaseSO, TListSO>(TBaseSO so, CSVType csvType, string soFolderPath) where TBaseSO : BaseSO where TListSO : BaseListSO<TBaseSO>
+        private static void TrySaveListSO<TBaseSO, TListSO>(TBaseSO baseSO, CSVType csvType, string soFolderPath) where TBaseSO : BaseSO where TListSO : BaseListSO<TBaseSO>
         {
             // Retrieve ListSO
             TListSO listSO = TryGetListSO<TBaseSO, TListSO>(csvType, soFolderPath);
 
             if (listSO.SOList.Count == 0)
-                listSO.SOList.Add(so);
+                listSO.SOList.Add(baseSO);
             else
             {
-                int soListIndex = listSO.SOList.FindIndex(listSOElement => listSOElement == so);
+                int soListIndex = listSO.GetIndex(baseSO);
 
                 if (soListIndex > -1)
-                    listSO.SOList[soListIndex] = so;
+                    listSO[soListIndex] = baseSO;
                 else
-                    listSO.SOList.Add(so);
+                    listSO.SOList.Add(baseSO);
             }
 
             SaveSO(listSO);
+        }
+
+        private static void TrySaveInventorySO(string soFolderPath)
+        {
+            string soName = "InventorySO";
+            string islSOFilePath = soFolderPath + $"/IngredientStacks/" + soName + ".asset";
+
+            IngredientListSO ingredientListSO = TryGetListSO<IngredientSO, IngredientListSO>(CSVType.Ingredients, soFolderPath);
+            IngredientStackListSO inventorySO = LoadOrCreateSO<IngredientStackListSO>(islSOFilePath);
+            inventorySO.name = soName;
+
+            inventorySO.Clear();
+
+            foreach (IngredientSO ingredientSO in ingredientListSO.SOList)
+            {
+                IngredientStackClass ingredientStack = new IngredientStackClass(ingredientSO, 0);
+                inventorySO.Add(ingredientStack);
+            }
+
+            SaveSO(inventorySO);
         }
         #endregion
     }

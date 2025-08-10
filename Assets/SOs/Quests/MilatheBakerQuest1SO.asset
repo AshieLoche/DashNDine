@@ -17,13 +17,7 @@ MonoBehaviour:
   NPCSO: {fileID: 11400000, guid: 92ae33ab213e189468614bf390631868, type: 2}
   RegionSO: {fileID: 11400000, guid: f3d3293cb3a2961498352739fc4c56d4, type: 2}
   Description: Gather 3 wheat and 1 honey.
-  QuestObjectiveList:
-  - IngredientSO: {fileID: 11400000, guid: ad3e11c36ff0a45428fd3a05371ab0c6, type: 2}
-    RequiredAmount: 3
-    CollectedAmount: 0
-  - IngredientSO: {fileID: 11400000, guid: 91670cc6ae9be6d40a13f00cbf44ac69, type: 2}
-    RequiredAmount: 1
-    CollectedAmount: 0
+  QuestObjectiveList: {fileID: 11400000, guid: 8284fd3690e2fef42b349357dc9dd78f, type: 2}
   QuestType: 0
   MonsterCount: 0
   ReputationRequired: 0
